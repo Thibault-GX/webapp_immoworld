@@ -1,0 +1,5 @@
+.NavbarLinks {
+    display: grid;
+    grid-template-columns: repeat(1, 100%);
+    grid-template-rows: auto;
+}
