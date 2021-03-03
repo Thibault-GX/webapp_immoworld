@@ -9,7 +9,7 @@ export default function Login(props) {
                 <h2 className="Titlelogin">Immoworld Connexion</h2>
                 <form className="FormConnection">
                 <label className="LabelConnection">
-                    Nom d'utilisateur:
+                    Nom d'utilisateur :
                     <input type="text" name="name" className="InputConnection"/>
                 </label>
                 <label className="LabelConnection">
