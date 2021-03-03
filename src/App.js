@@ -1,37 +1,38 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import './App.css';
 import {createBrowserHistory} from "history";
-import {Route, Router, Switch, withRouter} from "react-router-dom";
+import {Route, Router, Switch, useLocation} from "react-router-dom";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 import Home from "./views/Home/Home.js";
 import Login from "./views/Login/Login";
 import Header from "./components/Header/Header";
+import {AuthContext} from "./context/auth";
 
 const hist = createBrowserHistory();
 
-const Routes = withRouter((props) => {
-    // Permet d'afficher le header si la route actuelle n'est pas dans le tableau.
-    function shouldShowHeader() {
-        const hiddenInRoutes = ['/login'];
-        const {pathname} = props.location;
-        if (!hiddenInRoutes.includes(pathname)) {
-            return true;
-        }
-    }
+const Routes = () => {
+    const {pathname} = useLocation();
+    const [showHeader, setShowHeader] = useState(false);
+    const hiddenInRoutes = ['/login'];
+
+    useEffect(() => {
+        setShowHeader(!hiddenInRoutes.includes(pathname));
+    }, [hiddenInRoutes, pathname]);
 
     // Retourne les différentes routes et le header.
     return (
         <div>
-            {shouldShowHeader() ? (<Header/>) : null}
-            <main className={!shouldShowHeader() ? ("no-padding") : ''}>
+            {showHeader ? (<Header/>) : null}
+            <main className={!showHeader ? ("no-padding") : null}>
                 <Switch>
-                    <Route exact path="/" component={Home}/>
+                    <PrivateRoute exact path="/" component={Home}/>
                     <Route path="/login" component={Login}/>
                 </Switch>
             </main>
         </div>
     );
-})
+}
 
 /**
  * Elément Root
@@ -41,11 +42,13 @@ const Routes = withRouter((props) => {
  */
 const App = () => {
     return (
-        <div className="App">
-            <Router history={hist}>
-                <Routes/>
-            </Router>
-        </div>
+        <AuthContext.Provider value={true}>
+            <div className="App">
+                <Router history={hist}>
+                    <Routes/>
+                </Router>
+            </div>
+        </AuthContext.Provider>
     );
 }
 
