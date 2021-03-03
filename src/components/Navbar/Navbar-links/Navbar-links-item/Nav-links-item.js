@@ -1,9 +1,11 @@
 import React from "react";
+import {NavLink} from "react-router-dom";
+import './NavbarLinksItems.css'
 
 export default function NavbarLinksItem(props) {
     const {link} = props;
 
     return (
-        <li style={{marginRight: '20px'}}><a href={link.link} target="_blank">{link.name}</a></li>
+        <NavLink className="NavbarLinksItem" activeClassName="active" exact to={link.path}>{link.name}</NavLink>
     )
 }

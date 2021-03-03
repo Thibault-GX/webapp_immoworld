@@ -1,0 +1,8 @@
+.NavbarLinksItem {
+    padding: 10px 20px;
+}
+
+.NavbarLinksItem:hover,.active {
+    background-color: royalblue;
+    color: white;
+}
