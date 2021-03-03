@@ -10,11 +10,7 @@ import Header from "./components/Header/Header";
 const hist = createBrowserHistory();
 
 const Routes = withRouter((props) => {
-    /**
-     * Permet d'afficher le header si la route actuelle n'est pas dans le tableau.
-     *
-     * @returns {JSX.Element}
-     */
+    // Permet d'afficher le header si la route actuelle n'est pas dans le tableau.
     const showHeader = () => {
         const hiddenInRoutes = ['/login'];
         const {pathname} = props.location;
@@ -23,7 +19,7 @@ const Routes = withRouter((props) => {
         }
     }
 
-    // Retourne les différentes routes et le header
+    // Retourne les différentes routes et le header.
     return (
         <div>
             {showHeader()}
