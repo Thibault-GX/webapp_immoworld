@@ -1,12 +1,19 @@
 .Alert {
     background: #cfcfcf;
     width: 100%;
-    color: black
+    color: black;
+    justify-content: center;
+    grid-column: 3/9;
+    grid-row: 3/4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
 }
 
 .Alert.danger {
-    background: red;
-    color: white
+    background: #ff020242;
+    color: #e10000;
 }
 
 .Alert.success {

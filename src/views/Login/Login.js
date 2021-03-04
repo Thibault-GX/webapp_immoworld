@@ -47,7 +47,7 @@ export default function Login() {
             <img src={Logo} className="LogoConnection"></img>
             <div className="Connection">
                 <h2 className="Titlelogin">Immoworld Connexion</h2>
-                {error ? <Alert error={error}/> : null}
+                {error ? <Alert error={error} impact='danger' /> : null}
                 <form className="FormConnection" onSubmit={handleSubmit}>
                     <label className="LabelConnection">
                         Nom d'utilisateur :
