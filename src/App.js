@@ -12,13 +12,15 @@ import {AuthContext} from "./context/auth";
 const hist = createBrowserHistory();
 
 const Routes = () => {
-    const {pathname} = useLocation();
     const [showHeader, setShowHeader] = useState(false);
+
+    const {pathname} = useLocation();
     const hiddenInRoutes = ['/login'];
 
     useEffect(() => {
         setShowHeader(!hiddenInRoutes.includes(pathname));
     }, [hiddenInRoutes, pathname]);
+
 
     // Retourne les différentes routes et le header.
     return (
@@ -41,8 +43,10 @@ const Routes = () => {
  * @constructor
  */
 const App = () => {
+    const [isAuth, setIsAuth] = useState(null);
+
     return (
-        <AuthContext.Provider value={true}>
+        <AuthContext.Provider value={{isAuth, setIsAuth}}>
             <div className="App">
                 <Router history={hist}>
                     <Routes/>

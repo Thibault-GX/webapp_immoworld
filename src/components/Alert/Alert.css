@@ -1,0 +1,15 @@
+.Alert {
+    background: #cfcfcf;
+    width: 100%;
+    color: black
+}
+
+.Alert.danger {
+    background: red;
+    color: white
+}
+
+.Alert.success {
+    background: green;
+    color: white
+}
