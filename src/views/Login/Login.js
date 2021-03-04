@@ -3,6 +3,7 @@ import axios from 'axios';
 import styles from './Login.css';
 import Logo from '../../assets/img/examples/clem-onojegaw.jpg'
 import { SettingsSystemDaydreamTwoTone } from "@material-ui/icons";
+import ReactDatetimeClass from "react-datetime";
 
  
 export default function Login() {
@@ -26,12 +27,12 @@ export default function Login() {
         axios({
             method: 'post',
             url: 'http://immoworld.manusien-ecolelamanu.fr/api/v1/auth',
-            data: body,
-            headers: {'Content-Type': 'application/json'}
+            data: body
         })
         
         .then(function (response) {
-            console.log(response);
+            var data = response.data;
+            console.log(data.token);
         })
         .catch(function (error) {
             console.log(error);
