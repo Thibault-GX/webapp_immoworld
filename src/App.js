@@ -1,4 +1,4 @@
-import React, {useLayoutEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import './App.css';
 import {createBrowserHistory} from "history";
 import {Route, Router, Switch, useLocation} from "react-router-dom";
@@ -12,13 +12,13 @@ import {AuthContext} from "./context/auth";
 const hist = createBrowserHistory();
 
 const Routes = () => {
-    const hiddenInRoutes = ['/login'];
     const {pathname} = useLocation();
     const [showHeader, setShowHeader] = useState(false);
+    const hiddenInRoutes = ['/login'];
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         setShowHeader(!hiddenInRoutes.includes(pathname));
-    }, [pathname]);
+    }, [hiddenInRoutes, pathname]);
 
     // Retourne les différentes routes et le header.
     return (

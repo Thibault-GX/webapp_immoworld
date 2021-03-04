@@ -22,7 +22,7 @@
 }
 
 .Titlelogin{
-    color: blue;
+    color: rgba(0, 14, 230, 0.9);
     grid-column: 1/12;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     text-align: center;
@@ -48,7 +48,7 @@
     border-radius:50% ;
     height: 120px;
     width: 120px;
-    box-shadow: 0px 0px 10px 0px blue;
+    box-shadow: 0px 0px 10px 0px rgba(0, 14, 230, 0.9);
     grid-column: 5/8;
     margin-top: 5%;
     grid-row: 3/9;
@@ -80,7 +80,7 @@
 
 .InputConnectionSend{
     border: none;
-    background-color: blue;
+    background-color: rgba(0, 14, 230, 0.9);
     color: white;
     font-weight: bold;
     border-radius: 50px;
@@ -93,7 +93,7 @@
 
 .InputConnectionSend:hover{
     background-color: white;
-    color: blue;
-    border: 1px solid blue;
+    color: rgba(0, 14, 230, 0.9);
+    border: 1px solid rgba(0, 14, 230, 0.9);
     cursor: pointer;
 }
