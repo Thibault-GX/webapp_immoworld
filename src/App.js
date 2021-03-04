@@ -46,7 +46,7 @@ const App = () => {
     const [isAuth, setIsAuth] = useState(null);
 
     return (
-        <AuthContext.Provider value={{isAuth, setIsAuth}}>
+        <AuthContext.Provider value={true}>
             <div className="App">
                 <Router history={hist}>
                     <Routes/>
