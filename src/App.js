@@ -7,7 +7,8 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Home from "./views/Home/Home.js";
 import Login from "./views/Login/Login";
 import Header from "./components/Header/Header";
-import {AuthContext} from "./context/auth";
+import {AuthProvider} from "./context/auth";
+import Logout from "./components/Logout/Logout";
 
 const hist = createBrowserHistory();
 
@@ -29,6 +30,7 @@ const Routes = () => {
             <main className={!showHeader ? ("no-padding") : null}>
                 <Switch>
                     <PrivateRoute exact path="/" component={Home}/>
+                    <PrivateRoute path="/logout" component={Logout}/>
                     <Route path="/login" component={Login}/>
                 </Switch>
             </main>
@@ -43,16 +45,15 @@ const Routes = () => {
  * @constructor
  */
 const App = () => {
-    const [isAuth, setIsAuth] = useState(null);
 
     return (
-        <AuthContext.Provider value={true}>
+        <AuthProvider>
             <div className="App">
                 <Router history={hist}>
                     <Routes/>
                 </Router>
             </div>
-        </AuthContext.Provider>
+        </AuthProvider>
     );
 }
 

@@ -1,14 +1,20 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import axios from 'axios';
-import styles from './Login.css';
+import './Login.css';
 import Logo from '../../assets/img/examples/clem-onojegaw.jpg'
 import Alert from "../../components/Alert/Alert";
+import {useAuth} from "../../context/auth";
+import {Redirect} from "react-router-dom";
+import API from '../../api';
 
 
 export default function Login() {
 
     const [user, setUser] = useState({username: "", password: ""});
     const [error, setError] = useState(null);
+    const {isUserAuth, login} = useAuth();
+
+    const redirect = isUserAuth ? <Redirect to="/"/> : null;
 
     const handleChange = ({currentTarget}) => {
         const {name, value} = currentTarget;
@@ -19,19 +25,13 @@ export default function Login() {
         e.preventDefault();
         setError(null);
 
-        axios({
-            method: 'post',
-            url: 'http://immoworld.manusien-ecolelamanu.fr/api/v1/auth',
-            data: {
-                email: user.username,
-                password: user.password
-            },
+        API.post(`auth`, {
+            email: user.username,
+            password: user.password
         })
-
             .then(function (response) {
                 const {data} = response;
-                localStorage.setItem('token', data.token);
-                localStorage.setItem('expiresIn', data.expires_in);
+                login(data.token, data.expires_in);
             })
             .catch(function (error) {
                 if (error.response) {
@@ -44,10 +44,11 @@ export default function Login() {
 
     return (
         <div className="Login">
+            {redirect}
             <img src={Logo} className="LogoConnection"></img>
             <div className="Connection">
                 <h2 className="Titlelogin">Immoworld Connexion</h2>
-                {error ? <Alert error={error} impact='danger' /> : null}
+                {error ? <Alert error={error} impact='danger'/> : null}
                 <form className="FormConnection" onSubmit={handleSubmit}>
                     <label className="LabelConnection">
                         Nom d'utilisateur :
@@ -75,5 +76,6 @@ export default function Login() {
                 </form>
             </div>
         </div>
+
     )
 }
