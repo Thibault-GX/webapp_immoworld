@@ -3,10 +3,12 @@ import {Route, Redirect} from "react-router-dom";
 import {useAuth} from "../../context/auth";
 
 export default function PrivateRoute({component: Component, ...rest}) {
+    const {isUserAuth} = useAuth();
+
     const route = <Route {...rest} render={(props) => (
         <Component {...props} />
     )}/>;
     return (
-        useAuth() ? route : <Redirect to="/login" />
+        isUserAuth ? route : <Redirect to="/login" />
     )
 }

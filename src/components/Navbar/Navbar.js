@@ -12,6 +12,9 @@ export default function Navbar(props) {
     },{
         name:'Agenda',
         path:'/appointments'
+    },{
+        name: 'Logout',
+        path: '/logout'
     }]);
 
     return (

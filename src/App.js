@@ -9,6 +9,8 @@ import Login from "./views/Login/Login";
 import Header from "./components/Header/Header";
 import Appointments from "./views/Appointments/Appointments";
 import {AuthContext} from "./context/auth";
+import {AuthProvider} from "./context/auth";
+import Logout from "./components/Logout/Logout";
 
 const hist = createBrowserHistory();
 
@@ -30,6 +32,7 @@ const Routes = () => {
             <main className={!showHeader ? ("no-padding") : null}>
                 <Switch>
                     <PrivateRoute exact path="/" component={Home}/>
+                    <PrivateRoute path="/logout" component={Logout}/>
                     <Route path="/login" component={Login}/>
                     <Route path="/appointments" component={Appointments}/>
                 </Switch>
@@ -45,14 +48,15 @@ const Routes = () => {
  * @constructor
  */
 const App = () => {
+
     return (
-        <AuthContext.Provider value={true}>
+        <AuthProvider>
             <div className="App">
                 <Router history={hist}>
                     <Routes/>
                 </Router>
             </div>
-        </AuthContext.Provider>
+        </AuthProvider>
     );
 }
 
