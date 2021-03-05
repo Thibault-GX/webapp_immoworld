@@ -9,6 +9,9 @@ export default function Navbar(props) {
     }, {
         name: 'Login',
         path: '/login',
+    }, {
+        name: 'Logout',
+        path: '/logout'
     }]);
 
     return (
