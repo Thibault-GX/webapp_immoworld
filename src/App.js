@@ -11,6 +11,8 @@ import Appointments from "./views/Appointments/Appointments";
 import {AuthContext} from "./context/auth";
 import {AuthProvider} from "./context/auth";
 import Logout from "./components/Logout/Logout";
+import API from './api';
+import {useAuth} from "./context/auth";
 
 const hist = createBrowserHistory();
 
@@ -41,6 +43,28 @@ const Routes = () => {
     );
 }
 
+const WithAxios = ({children}) => {
+    const {isUserAuth, logout} = useAuth();
+    API.interceptors.request.use(req => {
+        if (isUserAuth) {
+            const token = localStorage.getItem('token');
+            req.headers.authorization = `Bearer ${token}`;
+        }
+        return req;
+    });
+
+    API.interceptors.response.use(res => res,
+        error => {
+            if (error.response.status === 401) {
+                logout();
+            }
+            return Promise.reject(error);
+        }
+    );
+
+    return children;
+}
+
 /**
  * Elément Root
  *
@@ -48,14 +72,15 @@ const Routes = () => {
  * @constructor
  */
 const App = () => {
-
     return (
         <AuthProvider>
-            <div className="App">
-                <Router history={hist}>
-                    <Routes/>
-                </Router>
-            </div>
+            <WithAxios>
+                <div className="App">
+                    <Router history={hist}>
+                        <Routes/>
+                    </Router>
+                </div>
+            </WithAxios>
         </AuthProvider>
     );
 }
