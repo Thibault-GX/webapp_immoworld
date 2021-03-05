@@ -18,9 +18,15 @@ const Appointments = () => {
 
     function OnclickDay(date,event){
         var change = event.target;
+        console.log(date);
         setDate(date,change);
-        API.get(`appointements`, {
-            dateTime: date
+        var month = date.getUTCMonth() + 1; //months from 1-12
+        var day = date.getUTCDate()  +1  ;
+        var year = date.getUTCFullYear();
+        var newdate = year + "-" + month + "-" + day;
+
+        API.get(`appointments`, {
+            dateTime: newdate
         })
             .then(function (response) {
                 const {data} = response;
@@ -38,7 +44,7 @@ const Appointments = () => {
         <div>
             <h1>{date.toLocaleDateString()}</h1>
             {error ? <Alert error={error} impact='danger'/> : null}
-            <Calendar onChange={onChange} onClickDay={OnclickDay} value={date}/>
+            <Calendar onChange={onChange} onClickDay={OnclickDay} value={date} />
         </div>
     )
 }
