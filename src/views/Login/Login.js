@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import axios from 'axios';
-import styles from './Login.css';
+import './Login.css';
 import Logo from '../../assets/img/examples/clem-onojegaw.jpg'
 import Alert from "../../components/Alert/Alert";
 
