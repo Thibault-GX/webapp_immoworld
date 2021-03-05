@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import axios from 'axios';
 import './Login.css';
 import Logo from '../../assets/img/examples/clem-onojegaw.jpg'
 import Alert from "../../components/Alert/Alert";
