@@ -3,16 +3,16 @@ import './App.css';
 import {createBrowserHistory} from "history";
 import {Route, Router, Switch, useLocation} from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-
 import Home from "./views/Home/Home.js";
-import Login from "./views/Login/Login";
 import Header from "./components/Header/Header";
 import Appointments from "./views/Appointments/Appointments";
-import {AuthContext} from "./context/auth";
+import AppointmentsDetails from "./views/AppointmentsDetails/AppointmentsDetails";
 import {AuthProvider} from "./context/auth";
 import Logout from "./components/Logout/Logout";
 import API from './api';
 import {useAuth} from "./context/auth";
+import Estates from "views/Estates/Estates";
+import Login from "views/Login/Login";
 
 const hist = createBrowserHistory();
 
@@ -35,8 +35,10 @@ const Routes = () => {
                 <Switch>
                     <PrivateRoute exact path="/" component={Home}/>
                     <PrivateRoute path="/logout" component={Logout}/>
-                    <Route path="/login" component={Login}/>
-                    <Route path="/appointments" component={Appointments}/>
+                    <PrivateRoute path="/estates" component={Estates}/>
+                    <PrivateRoute path="/appointments" component={Appointments}/>
+                    <Route path="/login" component={Login}/> 
+                    <PrivateRoute path="/appointment/:id" component={AppointmentsDetails} />
                 </Switch>
             </main>
         </div>
