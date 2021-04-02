@@ -7,13 +7,13 @@ export default function Navbar(props) {
         name: 'Accueil',
         path: '/',
     }, {
-        name: 'Login',
-        path: '/login',
+        name: 'Biens',
+        path: '/estates',
     },{
         name:'Agenda',
         path:'/appointments'
     },{
-        name: 'Logout',
+        name: 'Déconexion',
         path: '/logout'
     }]);
 

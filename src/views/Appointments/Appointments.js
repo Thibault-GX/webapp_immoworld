@@ -3,48 +3,54 @@ import Alert from "../../components/Alert/Alert";
 import Calendar from 'react-calendar';
 import './Appointments.css';
 import API from '../../api';
-
+import AppointmentList from '../../components/AppointmentList/AppointmentList';
+import Appointment from '../../components/Appointment/Appointment';
+import AddAppointment from '../../components/AddAppointment/AddAppointment';
+import 'react-calendar/dist/Calendar.css';
 
 const Appointments = () => {
     const [date, setDate] = useState(new Date());
     const [error, setError] = useState(null);
+    const [appointments, setAppointments] = useState([]);
+    const [currentDate, setCurrentDate] = useState(new Date(new Date().setHours(0,0,0,0)).getTime())
 
-    const onChange = (date,event) =>{
-        var change = event.target;
-        setDate(date,change);
-        console.log(change);
-        change.classList.add("Active");
-    }
-
-    function OnclickDay(date,event){
-        var change = event.target;
-        console.log(date);
-        setDate(date,change);
-        var month = date.getUTCMonth() + 1; //months from 1-12
-        var day = date.getUTCDate()  +1  ;
-        var year = date.getUTCFullYear();
-        var newdate = year + "-" + month + "-" + day;
-
-        API.get(`appointments`, {
-            dateTime: newdate
+    React.useEffect(function(){
+        API.get(`appointments/?filter[where_date]=${currentDate}`, {
         })
             .then(function (response) {
-                const {data} = response;
+                const {appointments:data} = response.data;
+                setAppointments(data);
             })
             .catch(function (error) {
                 if (error.response) {
                     if (error.response.status === 404) {
-                        setError("Vous n'est pas connecter");
+                        setError("Vous n'êtes pas connecté");
                     }
                 }
             });
+    },[currentDate,setCurrentDate])
+
+    const onChange = (date,event) =>{
+        var change = event.target;
+        setDate(date,change);
+    }
+
+    function OnclickDay(date,event){
+        var change = event.target;
+        setCurrentDate(new Date(date.setHours(0,0,0,0)).getTime());
     }
 
     return (
-        <div>
-            <h1>{date.toLocaleDateString()}</h1>
+        <div className="Appointments">
+            {/* <h1>{date.toLocaleDateString()}</h1> */}
             {error ? <Alert error={error} impact='danger'/> : null}
             <Calendar onChange={onChange} onClickDay={OnclickDay} value={date} />
+            <AppointmentList>
+                {appointments.map( function(appointment){
+                    return <Appointment appointment={appointment} key={appointment.id}></Appointment>
+                } )}
+            </AppointmentList>
+            <AddAppointment setAppointments={setAppointments} appointments={appointments}></AddAppointment>
         </div>
     )
 }

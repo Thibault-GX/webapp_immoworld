@@ -1,27 +1,153 @@
-.react-calendar{
-    width: 50%;
+.Appointments{
+    /* display: flex;
+    flex-wrap: wrap; */
+    display: grid;
+    grid-template-columns: repeat(10,10%);
+    grid-template-rows: repeat(12,10%);
+    height: 100vh;
 }
 
-.react-calendar__navigation button{
-    border: none;
-    background-color: rgba(21, 21, 223, 0.747);
+.Appointments h1{
+    grid-column: 1/11;
+    grid-row: 1/1;
+}
+
+.Appointment{
+    width: 97%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 90px;
+    background: #4d4de4;
+    border-radius: 10px;
     color: white;
+    margin: auto auto 10px;
+}
+
+.Appointment img{
+    width: 10%;
+    border-radius: 50%;
+    margin: 10px 10px 10px 10px;
+}
+
+.ButtonAppointmentsDetails{
+    border: 2px solid white;
+    background: transparent;
+    color: white;
+    width: 20%;
+    height: 35%;
     font-size: 1.2rem;
-    font-weight: bold;
-    margin: 1px;
+    border-radius: 9px;
+    margin-left: 18%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 4px 12px -3px;
 }
 
-.react-calendar__navigation__next2-button{
-    border-radius: 0px 10px 0px 0px;
+.ButtonAppointmentsDetails:hover{
+    border: 3px solid white;
+    background: white;
+    color: blue;
+}
+.Appointment h2{
+    margin-right: 2%;
 }
 
-.react-calendar__navigation__prev2-button{
-    border-radius: 10px 0px 0px 0px;
+.AppointmentList{
+    /* width: 49%; */
+    /* width: 49%; */
+    float: left;
+    margin-left: 1%;
+    /* border: solid; */
+    text-align: center;
+    overflow-y: scroll;
+    max-height: 1080px;
+    border-radius: 10px;
+    grid-column: 6/11;
+    grid-row: 2/13;
 }
+
+.AddAppointment{
+    display: flex;
+    flex-wrap: wrap;
+    /* border: 3px solid; */
+    /* width: 48.6%; */
+    border-radius: 10px;
+    grid-column: 1/6;
+    grid-row: 8/13;
+    margin-top: -50px;
+}
+
+.Appointment:hover{
+    background-color: #2f2f80;
+}
+
+.LabelAddAppointment{
+    width: 100%;
+    font-size: 1.2rem;
+    display: inline-block;
+}
+
+.InputAddAppointment{
+    width: 100%;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.InputDate{
+    width: 49%;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.InputTime{
+    width: 49%;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-left: 7px;
+}
+
+.AddAppointmentForm{
+    width: 100%;
+}
+.react-calendar {
+    grid-column: 1/6;
+    grid-row: 2/6;
+    width: 100% !important;
+    border: none !important;
+    background-color: blue !important;
+    color: white !important;
+    border-radius: 15px;
+}
+.react-calendar__tile--active{
+    color: white !important;
+    background-color: blue !important;
+}
+
+
+.react-calendar__navigation__next2-button ,.react-calendar__navigation__arrow ,.react-calendar__navigation__next-button ,.react-calendar__navigation__prev2-button,.react-calendar__navigation__label{
+    color: white;
+    font-size: 1.5rem;
+    text-transform: capitalize;
+}
+
+.react-calendar__navigation button:enabled:hover, .react-calendar__navigation button:enabled:focus{
+    background-color: rgb(65, 65, 253) !important;
+    border-radius: 15px;
+}
+
+/* .react-calendar__tile:enabled:hover, .react-calendar__tile:enabled:focus {
+    color: #00f;
+    background: #1ab4ff !important;
+} */
 
 .react-calendar__viewContainer{
     background-color: rgba(21, 21, 223, 0.747);
-    color: white;
+    color: rgb(226, 195, 238);
     text-decoration: none;
     font-size: 1.2rem;
     text-align: center;
@@ -29,8 +155,8 @@
 }
 
 .react-calendar__month-view__days button{
-    background-color: honeydew;
-    border:1px solid rgba(21, 21, 223, 0.747);
+    background-color: rgb(255, 255, 255);
+    /* border:1px solid rgba(21, 21, 223, 0.747); */
     height: 80px;
     text-align: right;
     display: flex;
@@ -38,14 +164,3 @@
     font-size: 1.2rem;
     justify-content: end;
 }
-
-.react-calendar__month-view__days button:hover{
-    background-color: rgba(0, 0, 255, 0.295);
-    color: white;
-}
-
-.Active{
-    background-color: rgb(17, 100, 155) !important;
-    color: white;
-}
-

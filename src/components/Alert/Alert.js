@@ -2,11 +2,11 @@ import React from "react";
 import './Alert.css'
 
 export default function Alert(props) {
-    const {error,impact} = props;
+    const {message,impact} = props;
 
     return (
         <div className={`Alert ${impact}`}>
-            <p>{error}</p>
+            <p>{message}</p>
         </div>
     );
 }
