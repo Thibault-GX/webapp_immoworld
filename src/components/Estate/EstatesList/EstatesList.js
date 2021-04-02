@@ -9,6 +9,13 @@ function EstatesList() {
             <Estate></Estate>
             <Estate></Estate>
             <Estate></Estate>
+            <Estate></Estate>
+            <Estate></Estate>
+            <Estate></Estate>
+            <Estate></Estate>       <Estate></Estate>
+            <Estate></Estate>
+            <Estate></Estate>
+            <Estate></Estate>
         </div>
     )
 }
