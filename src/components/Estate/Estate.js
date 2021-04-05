@@ -3,19 +3,18 @@ import '../../components/Estate/Estate.css'
 import Logo from '../../assets/img/examples/clem-onojegaw.jpg'
 import { Panel} from 'rsuite';
 
-function Estate({estates}) {
+function Estate({estate}) {
+    // console.log(estate);
     return (
         <div className="show-grid EstatesCard">
-            <Panel shaded bordered bodyFill style={{ display: 'inline-block', width: 240 }}>
-                <img src="https://via.placeholder.com/240x240" height="240" />
-                <Panel header="Maison de campagne">
+            <Panel shaded bordered bodyFill style={{ display: 'inline-block', width: 250 }}>
+                <img src="https://via.placeholder.com/240x240" height="250" />
+                <Panel header={estate.label}>
                 <p>
-                    <p>terrain constructible</p>
-                    <p>rawSurface 1200</p>
-                    <p>livingSurface 0</p>
-                    <p>constructionDate "1980-02-12"</p>
-                    <p>price 80000</p>
-                    <p>parking 0</p>
+                    <p>Surface au sol : {estate.rawSurface} m²</p>
+                    <p>Surface habitable : {estate.livingSurface} m²</p>
+                    {/* <p>Date de construction : {estate.constructionDate}</p> */}
+                    <p>Prix : {estate.price} €</p>
                     <button className="EstateButton">Voir le bien</button>
                 </p>
                 </Panel>

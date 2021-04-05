@@ -1,8 +1,11 @@
 .NavbarLinksItem {
     padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 .NavbarLinksItem:hover,.active {
     background-color: royalblue;
     color: white;
+    text-decoration: none;
 }
