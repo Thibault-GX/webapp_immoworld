@@ -1,16 +1,30 @@
 import React from 'react'
 import '../../components/Estate/Estate.css'
+import Logo from '../../assets/img/examples/clem-onojegaw.jpg'
+import { Panel} from 'rsuite';
 
-function Estate() {
+function Estate({estate}) {
+    // console.log(estate);
     return (
-        <div className="EstatesCard">
-            <h2>Maison de campagne</h2>
-            <p>terrain constructible</p>
-            <p>rawSurface 1200</p>
-            <p>livingSurface 0</p>
-            <p>constructionDate "1980-02-12"</p>
-            <p>price 80000</p>
-            <p>parking 0</p>
+        <div className="show-grid EstatesCard">
+            <Panel shaded bordered bodyFill style={{ display: 'inline-block', width: 300 }}>
+                <img src="https://via.placeholder.com/240x240" height="300" />
+                <Panel header={estate.label}>
+                <p>
+                    <p>Surface au sol : {estate.rawSurface} m²</p>
+                    <p>Surface habitable : {estate.livingSurface} m²</p>
+                    <p>Parking : {estate.parking ? "Oui" : "Non"}</p>
+                    <p>Piscine : {estate.swimmingpool ? "Oui" : "Non"}</p>
+                    <p>Terrasse : {estate.terrace ? "Oui" : "Non"}</p>
+                    <p>Garage  : {estate.garage ? "Oui" : "Non"}</p>
+                    <p>Jardin : {estate.garden ? "Oui" : "Non"}</p>
+                    <p>Sous-sol : {estate.basement ? "Oui" : "Non"}</p>
+                    <p>Prix : {estate.price} €</p>
+                    <p>Code postal : {estate.zipCode}</p>
+                    <button className="EstateButton">Voir le bien</button>
+                </p>
+                </Panel>
+            </Panel>
         </div>
     )
 }

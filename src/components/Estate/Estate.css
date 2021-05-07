@@ -1,6 +1,46 @@
 .EstatesCard{
-    width: 20%;
-    border: 2px solid black;
-    border-radius: 20px;
-    padding: 2%;
+    margin-left: 1%;
+    margin-bottom: 2%;
+}
+
+.border{
+    /* border: 1px solid black; */
+    padding: 1%;
+    display: flex;
+    align-items: center;
+    margin-top: 10%;
+}
+
+.marginTop-2{
+    margin-top: 1%;
+    display: flex;
+    justify-content: center;
+    /* margin-bottom: 1%; */
+}
+.marginBottom-1{
+    margin-bottom: 1%;
+}
+
+.EstatesIllustration{
+    width: 100%;
+    height: 30%;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.EstateButton{
+    width: 100%;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    margin-top: 5%;
+    border:1px solid blue;
+    background-color: blue;
+    color: white;
+    box-shadow: 0px 0px 8px black;
+}
+
+.EstateButton:hover{
+    background-color: white;
+    color: blue;
+    box-shadow: 0px 0px 8px blue;
+    cursor: pointer;
 }
