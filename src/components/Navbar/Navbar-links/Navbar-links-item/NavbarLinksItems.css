@@ -6,6 +6,6 @@
 
 .NavbarLinksItem:hover,.active {
     background-color: royalblue;
-    color: white;
-    text-decoration: none;
+    color: white !important;
+    text-decoration: none !important;
 }

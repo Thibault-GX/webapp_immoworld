@@ -1,0 +1,12 @@
+.AddFilter{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    box-shadow: 0px 0px 11px -2px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: blue;
+}

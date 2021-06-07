@@ -30,6 +30,7 @@ export default function Login() {
         })
             .then(function (response) {
                 const {data} = response;
+                console.log(response);
                 login(data.token, data.expires_in);
             })
             .catch(function (error) {
@@ -40,11 +41,12 @@ export default function Login() {
                 }
             });
     }
-
+    // document.querySelector('#mainMobile').className='no-padding'
     return (
         <div className="Login">
             {redirect}
-            <img src={Logo} className="LogoConnection"></img>
+
+            {/* <img src={Logo} className="LogoConnection"></img> */}
             <div className="Connection">
                 <h2 className="Titlelogin">Immoworld Connexion</h2>
                 {error ? <Alert message={error} impact='danger'/> : null}
