@@ -4,10 +4,16 @@ import NavbarLinks from "./Navbar-links/Navbar-links";
 
 
 export default function Navbar(props) {
+    const [screen, setScreen] = React.useState({
+        x : window.screen.width,
+        y : window.screen.height
+    })
+    const [change,setChange] = React.useState(false);
+
     const [links] = useState([{
         name: 'Accueil',
         path: '/',
-        icon : 'home'
+        icon : 'globe'
     }, {
         name: 'Biens',
         path: '/estates',
@@ -17,13 +23,29 @@ export default function Navbar(props) {
         path:'/appointments',
         icon : 'calendar'
     },{
-        name: 'Déconexion',
+        name : 'personnels',
+        path: '/users',
+        icon : 'user-info'
+    },{
+        name: 'Clients',
+        path: '/customers',
+        icon : 'user-circle'
+    },{
+        name: 'Déconnexion',
         path: '/logout',
         icon : 'exit'
     }]);
+    
+    
+    React.useEffect(function() {
+        window.addEventListener('resize', function(){
+          setScreen({ x : window.screen.width, y : window.screen.height});
+        });
+    },[change,setChange])
 
+    
     return (
-        <div className="Navbar">
+        <div className={screen.x > 1024 ? "Navbar" : "NavbarMobile" }>
             <NavbarLinks links={links} />
         </div>
     )

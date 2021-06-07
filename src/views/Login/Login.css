@@ -117,7 +117,9 @@
 
 
 @media only screen and (max-width:414px ){
+
     .Login:before{
+        padding: 0;
         left: 0%;
         width: 300;
         height: 200%;
@@ -126,11 +128,6 @@
         grid-column: 2/10;
         grid-row: 4/8;
     }
-
-    .LogoConnection{
-        margin-left: -15%;
-    }
-
     .Login{
         overflow: hidden;
     }
@@ -138,16 +135,15 @@
     .InputConnectionSend{
         width: 100%;
     }
-
     .Titlelogin{
-        margin-top: 18%;
-
+        font-size:1.2rem
     }
     .InputConnection{
         font-size: 1rem;
     }
     .FormConnection{
-        grid-row: 5;
+        grid-row: 4;
+        grid-column: 2/10;
     }
     .Alert{
         grid-row: 4/4 !important;

@@ -2,15 +2,16 @@ import React from 'react'
 import '../../views/Estates/Estates.css';
 import EstatesList from '../../components/Estate/EstatesList/EstatesList';
 import Estate from '../../components/Estate/Estate';
-import { Col,Grid ,Row} from 'rsuite';
+import { Button, Col,Grid ,Row} from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
 import API from 'api';
+
+import AvatarGeneration from 'components/Avatar/Avatar';
 
 
 function Estates() {
     const [async, setAsync] = React.useState(false);
     const [estates,setEstates] = React.useState([]);
-    const [link,setLink] = React.useState('estatestype');
     const [estatestypes,setData] = React.useState([]);
     const [formValues,setFormValues] = React.useState({
         parking : false,
@@ -56,7 +57,7 @@ function Estates() {
                     }
                 }
             });
-    },[link,setLink])
+    },[])
 
     const handleChangeFilter = (e) => {
         console.log(e.target.type);
@@ -87,13 +88,30 @@ function Estates() {
         filter[WhereLivingSurfaceMax]=${formValues.surface}&
         filter[Garden]=${formValues.garden}`);
     }
+
+    const [showFilter, setShowFilter] = React.useState(false);
+    const [screen, setScreen] = React.useState({
+        x : window.screen.width,
+        y : window.screen.height
+    })
+    const [change,setChange] = React.useState(false);
+
+    React.useEffect(function() {
+        window.addEventListener('resize', function(){
+          setScreen({ x : window.screen.width, y : window.screen.height});
+        });
+    },[change,setChange])
+
+const show = () =>{
+    showFilter ? setShowFilter(false) : setShowFilter(true)
+}
     console.log(estates)
     return (
         <div className="EstateList">
             <h1>Liste des bien</h1>
             <Grid fluid className="show-container">
                 <Row className="show-grid" justify="center">
-                    <Col xs={8}>
+                    <Col xs={screen.x > 415 ? 8 : 24}>
                         <p>
                             Prix entre 0€ et {formValues.price}€
                             <input
@@ -108,7 +126,7 @@ function Estates() {
                             />
                         </p>
                     </Col>
-                    <Col xs={8}>
+                    <Col xs={screen.x > 415 ? 8 : 24}>
                         <p>
                             Surface habitable 0m² et {formValues.surface}m²
                             <input
@@ -123,7 +141,7 @@ function Estates() {
                             />
                         </p>
                     </Col>
-                    <Col xs={8}>
+                    <Col xs={screen.x > 415 ? 8 : 24}>
                         <p>
                             Surface du terrain 0m² et {formValues.RawSurface}m²
                             <input
@@ -139,119 +157,131 @@ function Estates() {
                         </p>
                     </Col>
                 </Row>
-                <Row className="show-grid marginTop-2">
-                    <Col xs={4}>
+                {screen.x < 750 ? 
+                <Button 
+                    onClick={(e) => show()}
+                    style={{borderRadius:'25px',boxShadow:'0px 0px 11px -3px black',color:'blue', marginTop : '2%', marginBottom : '1%'}}
+                    > { showFilter ? 'Moin de filtres' : 'Plus de filtres'}
+                </Button> : ""}
+                <div 
+                    style={{display: 
+                        (showFilter || screen.x > 750 )? 'block' : 'none'
+                    }}
+                >
+                    <Row className="show-grid marginTop-2" style={{flexWrap:"wrap"}}>
+                        <Col sm={4} xs={8} className="marginTop-2">
+                            <p>
+                                <span>Parking </span>
+                                <input 
+                                    type="checkbox" 
+                                    id="parking"
+                                    name="parking"
+                                    defaultChecked={formValues.parking}
+                                    onChange={(e) => handleChangeFilter(e)}
+                                />
+                            </p>
+                        </Col>
+                        <Col sm={4} xs={8} className="marginTop-2">
+                            <p>
+                                <span>Piscine </span>
+                                <input 
+                                    type="checkbox" 
+                                    id="swimingPool"
+                                    name="swimingPool"
+                                    defaultChecked={formValues.swimingPool}
+                                    onChange={(e) => handleChangeFilter(e)}
+                                />
+                            </p> 
+                        </Col>
+                        <Col sm={4} xs={8} className="marginTop-2">
+                            <p>
+                                <span>Terrasse </span>
+                                <input 
+                                    type="checkbox" 
+                                    id="terrases"
+                                    name="terrases"
+                                    defaultChecked={formValues.terrases}
+                                    onChange={(e) => handleChangeFilter(e)}
+                                />
+                            </p> 
+                        </Col>
+                        <Col sm={4} xs={8} className="marginTop-2">
                         <p>
-                            <span>Parking </span>
+                                <span>Garage </span>
+                                <input 
+                                    type="checkbox" 
+                                    id="garage"
+                                    name="garage"
+                                    defaultChecked={formValues.garage}
+                                    onChange={(e) => handleChangeFilter(e)}
+                                />
+                            </p> 
+                        </Col>
+                        <Col sm={4} xs={8} className="marginTop-2">
+                            <p>
+                                <span>Jardin </span>
+                                <input 
+                                    className=""
+                                    type="checkbox" 
+                                    id="garden"
+                                    name="garden"
+                                    defaultChecked={formValues.garden}
+                                    onChange={(e) => handleChangeFilter(e)}
+                                />
+                            </p> 
+                        </Col>
+                        <Col sm={4} xs={8} className="marginTop-2">
+                            <p>
+                                <span>Sous-sol </span>
+                                <input 
+                                    className=""
+                                    type="checkbox" 
+                                    id="basement"
+                                    name="garden"
+                                    defaultChecked={formValues.basement}
+                                    onChange={(e) => handleChangeFilter(e)}
+                                />
+                            </p> 
+                        </Col>
+                    </Row>
+                    <Row className="show-grid marginTop-2 marginBottom-1 wrap" style={{flexWrap:"wrap"}}>
+                        <Col sm={6} xs={24} className="marginTop-2">
                             <input 
-                                type="checkbox" 
-                                id="parking"
-                                name="parking"
-                                defaultChecked={formValues.parking}
-                                onChange={(e) => handleChangeFilter(e)}
+                                name="ZipCode"
+                                placeholder="Code postal"
+                                type="text"
+                                className="rs-input"
                             />
-                        </p>
-                    </Col>
-                    <Col xs={4}>
-                        <p>
-                            <span>Piscine </span>
+                        </Col>
+                        <Col sm={6} xs={24} className="marginTop-2" >
                             <input 
-                                type="checkbox" 
-                                id="swimingPool"
-                                name="swimingPool"
-                                defaultChecked={formValues.swimingPool}
-                                onChange={(e) => handleChangeFilter(e)}
+                                name="bedRoom"
+                                placeholder="Nombre de chambre"
+                                type="number"
+                                className="rs-input"
                             />
-                        </p> 
-                    </Col>
-                    <Col xs={4}>
-                        <p>
-                            <span>Terrasse </span>
+                        </Col>
+                        <Col sm={6} xs={24} className="marginTop-2" >
                             <input 
-                                type="checkbox" 
-                                id="terrases"
-                                name="terrases"
-                                defaultChecked={formValues.terrases}
-                                onChange={(e) => handleChangeFilter(e)}
+                                name="numberRoom"
+                                placeholder="Nombre de salle de bain"
+                                type="number"
+                                className="rs-input"
                             />
-                        </p> 
-                    </Col>
-                    <Col xs={4}>
-                    <p>
-                            <span>Garage </span>
-                            <input 
-                                type="checkbox" 
-                                id="garage"
-                                name="garage"
-                                defaultChecked={formValues.garage}
-                                onChange={(e) => handleChangeFilter(e)}
-                            />
-                        </p> 
-                    </Col>
-                    <Col xs={4}>
-                        <p>
-                            <span>Jardin </span>
-                            <input 
-                                className=""
-                                type="checkbox" 
-                                id="garden"
-                                name="garden"
-                                defaultChecked={formValues.garden}
-                                onChange={(e) => handleChangeFilter(e)}
-                            />
-                        </p> 
-                    </Col>
-                    <Col xs={4}>
-                        <p>
-                            <span>Sous-sol </span>
-                            <input 
-                                className=""
-                                type="checkbox" 
-                                id="basement"
-                                name="garden"
-                                defaultChecked={formValues.basement}
-                                onChange={(e) => handleChangeFilter(e)}
-                            />
-                        </p> 
-                    </Col>
-                </Row>
-                <Row className="show-grid marginTop-2 marginBottom-1">
-                <Col xs={6}>
-                        <input 
-                            name="ZipCode"
-                            placeholder="Code postal"
-                            type="text"
-                            className="rs-input"
-                        />
-                    </Col>
-                    <Col xs={6}>
-                        <input 
-                            name="bedRoom"
-                            placeholder="Nombre de chambre"
-                            type="number"
-                            className="rs-input"
-                        />
-                    </Col>
-                    <Col xs={6}>
-                        <input 
-                            name="numberRoom"
-                            placeholder="Nombre de salle de bain"
-                            type="number"
-                            className="rs-input"
-                        />
-                    </Col>
-                    <Col xs={6}>
-                        <select className="rs-input">
-                        <option>Type de biens</option>
-                        {estatestypes.map( function(estateType){
-                            return <option 
-                            value={estateType.id} 
-                            key={estateType.id} 
-                            >{estateType.name}</option>
-                        } )}
-                        </select>
-                    </Col>
-                </Row>
+                        </Col>
+                        <Col sm={6} xs={24} className="marginTop-2" >
+                            <select className="rs-input">
+                            <option>Type de biens</option>
+                            {estatestypes.map( function(estateType){
+                                return <option 
+                                value={estateType.id} 
+                                key={estateType.id} 
+                                >{estateType.name}</option>
+                            } )}
+                            </select>
+                        </Col>
+                    </Row>
+                </div>
             </Grid>
             <EstatesList>
                 {estates.map((estate, i) => {

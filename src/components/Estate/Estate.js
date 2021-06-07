@@ -1,7 +1,7 @@
 import React from 'react'
 import '../../components/Estate/Estate.css'
 import Logo from '../../assets/img/examples/clem-onojegaw.jpg'
-import { Panel} from 'rsuite';
+import { Panel } from 'rsuite';
 
 function Estate({estate}) {
     // console.log(estate);
