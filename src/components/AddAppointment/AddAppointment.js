@@ -3,6 +3,7 @@ import "react-datetime/css/react-datetime.css";
 import 'moment/locale/fr';
 import API from 'api';
 import Alert from "../../components/Alert/Alert";
+import './AddAppointment.css';
 
 const AddAppointment = ({setAppointments = null, appointments = null}) => {
     // L'état par défaut des valeurs de ton formulaire
@@ -116,12 +117,12 @@ function formatDate() {
                         console.log([...appointments]);
                         setAppointments([...appointments ])
                     }
-                    setSuccess('Votre rendez-vous a été ajouté avec succée');
+                    setSuccess('Votre rendez-vous a été ajouté avec succès');
                 })
                 .catch(function (error) {
                     if (error.response) {
                         if (error.response.status === 422) {
-                            setError('Un ou plusieurs champs sont incorrect');
+                            setError('Un ou plusieurs champs sont incorrects');
                         }
                     }
                 });
@@ -144,21 +145,24 @@ function formatDate() {
                     value={formValues.contactName}
                 />
                 <div className="Alert danger">{formValues.contactNameError}</div>
-                <label className="LabelAddAppointment">Date du rendez-vous</label>
-                <input 
-                    type="date"
-                    id="date"
-                    className="InputDate"
-                    onChange={(e) => handleChange(e)}
-                    value={formValues.date}
-                />
-                <input 
-                    type="time"
-                    id="time"
-                    className="InputTime"
-                    onChange={(e) => handleChange(e)}
-                    value={formValues.time}
-                />
+                <div id="dateAndHour">
+                    <label className="LabelAddAppointment">Date du rendez-vous</label>
+                    <input 
+                        type="date"
+                        id="date"
+                        className="InputDate"
+                        onChange={(e) => handleChange(e)}
+                        value={formValues.date}
+                    />
+                    <label className="LabelAddAppointment">Heure du rendez-vous</label>
+                    <input 
+                        type="time"
+                        id="time"
+                        className="InputTime"
+                        onChange={(e) => handleChange(e)}
+                        value={formValues.time}
+                    />
+                </div>
                 <div className="Alert danger">{formValues.dateError}</div>
                 <label className="LabelAddAppointment">Adresse du rendez-vous</label>
                 <input

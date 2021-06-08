@@ -1,0 +1,9 @@
+.AddAppointment {
+    max-width: 50%;
+}
+
+@media (max-width: 844px) {
+    .AddAppointment {
+        max-width: 100%;
+    }
+}

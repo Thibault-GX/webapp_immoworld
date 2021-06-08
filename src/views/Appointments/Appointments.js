@@ -1,12 +1,13 @@
 import React, {useState} from 'react'
 import Alert from "../../components/Alert/Alert";
 import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 import './Appointments.css';
+import '../CustomReactCalendar/customReactCalendar.css';
 import API from '../../api';
 import AppointmentList from '../../components/AppointmentList/AppointmentList';
 import Appointment from '../../components/Appointment/Appointment';
 import AddAppointment from '../../components/AddAppointment/AddAppointment';
-import 'react-calendar/dist/Calendar.css';
 
 const Appointments = () => {
     const [date, setDate] = useState(new Date());

@@ -1,0 +1,33 @@
+.AppointmentList {
+    max-width: 49%;
+}
+
+.Appointment {
+    display: flex;
+    justify-content: space-around;
+    padding: 2%;
+}
+
+.Appointment > a, .Appointment > a:hover, .Appointment > a:focus, .Appointment > a:active {
+    text-decoration: none;
+}
+
+@media (max-width: 844px) {
+    .AppointmentList {
+        width: 100%;
+        max-width: 100%;
+    }
+    .Appointment {
+        display: flex;
+        flex-wrap: wrap;
+        height: auto;
+        flex-direction: column;
+    }
+    .Appointment > a {
+        width: 80%;
+        margin-left: 0;
+    }
+    .Appointment > img {
+        width: 15%;
+    }
+}
