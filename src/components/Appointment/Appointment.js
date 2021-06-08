@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
 import Img  from '../../assets/img/faces/avatar_default.png'
+import './Appointment.css';
 
 const Appointment = ({appointment}) => {
     return (
