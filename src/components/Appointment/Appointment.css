@@ -2,3 +2,36 @@
     display: flex;
     flex-wrap: wrap;
 }
+.Appointment > p {
+    font-size: 1.5rem;
+    padding: 2%;
+}
+.Appointment > h2 {
+    font-size: 1.4rem;
+}
+.Appointment > a {
+    width: 10rem;
+    height: 2rem;
+}
+.Appointment {
+    display: flex;
+    justify-content: space-around;
+    padding: 2%;
+}
+
+.Appointment > a, .Appointment > a:hover, .Appointment > a:focus, .Appointment > a:active {
+    text-decoration: none;
+}
+
+@media (max-width: 844px) {
+    .Appointment {
+        display: flex;
+        flex-wrap: wrap;
+        height: auto;
+        flex-direction: column;
+    }
+    .Appointment > a {
+        width: 80%;
+        margin-left: 0;
+    }
+}

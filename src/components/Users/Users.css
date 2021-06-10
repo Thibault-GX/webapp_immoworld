@@ -1,3 +1,49 @@
+#addUser {
+    border-radius: 50%;
+    width: 5rem;
+    height: 5rem;
+    font-size: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4169E1;
+    color: white;
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    box-shadow: 0px 0px 10px 3px grey;
+    border: 2px solid darkslategrey;
+}
+
+#addUserForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#userList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.formGroup {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.formGroupItem {
+    display: flex;
+    flex-direction: column;
+    width: 47%;
+    margin-bottom: 1.2rem;
+}
+.formItem {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.2rem;
+}
+
 .SelectAgencie{
     display: block;
     /* width: 100%; */
@@ -17,5 +63,91 @@
     /* -moz-appearance: none; */
     appearance: none;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+.userItems {
+    background-color: lightgreen;
+    min-width: 350px;
+    max-width: 100%;
+    margin: 5%;
+    max-height: 250px;
+}
+
+.modal-trigger-button {
+    min-width: 25rem;
+    height: 3.5rem;
+    margin: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: rgb(24,113,168);
+    background: linear-gradient(90deg, rgba(24,113,168,1) 0%, rgba(24,113,168,0.57) 81%, rgba(255,255,255,1) 90%); 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid darkslategrey;
+    color: #fff;
+    box-shadow: 0px 0px 5px 2px grey;
+}
+
+.modal-trigger-button:hover, .modal-trigger-button:focus, .modal-trigger-button:active {
+    background: #4169E1;
+    color: white;
+    transition: 0.5s;
+}
+
+.modal-trigger-button > img {
+    width: 2rem;
+}
+
+.rs-modal-content {
+    background-color: #ececec;
+    border: solid 1px darkslateblue;
+    box-shadow: 0px 0px 10px 3px;
+    font-weight: 600;
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: 25%;
+    margin-bottom: 25%;
+}
+
+.rs-btn-primary {
+    font-weight: bold;
+    background-color: rgb(24,113,168);
+}
+
+@media (max-width: 844px) {
+    h1 {
+        font-size: 1.5rem !important;
+    }
+    .modal-trigger-button {
+        min-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        flex-wrap: wrap;
+    }
+    #userList {
+        flex-direction: column;
+    }
+}
+@media (max-width: 375px) {
+    .modal-trigger-button {
+        font-size: 1rem;
+    }
+    .rs-modal-wrapper {
+        overflow: hidden;
+    }
+    .rs-modal-content {
+        height: 50%;
+        width: 360px;
+        margin-top: 10%;
+        margin-left: 0.5rem;
+    }
+    .formGroupItem {
+        width: 100%;
+        margin-bottom: 1.2rem;
+    }
+    .formItem {
+        margin-bottom: 1.2rem;
+    }
 }
