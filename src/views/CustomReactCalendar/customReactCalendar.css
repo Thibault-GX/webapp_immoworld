@@ -49,4 +49,7 @@
     .react-calendar {
         width: 100%;
     }
+    .react-calendar__navigation__label__labelText {
+        line-height: 1.5rem;
+    }
 }

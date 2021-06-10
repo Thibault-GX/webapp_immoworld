@@ -13,7 +13,6 @@ import API from './api';
 import {useAuth} from "./context/auth";
 import Estates from "views/Estates/Estates";
 import Login from "views/Login/Login";
-import AvatarGeneration from "components/Avatar/Avatar";
 import UsersList from "components/Users/UsersList";
 
 const hist = createBrowserHistory();

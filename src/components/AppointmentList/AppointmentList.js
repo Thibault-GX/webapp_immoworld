@@ -10,4 +10,4 @@ const AppointmentList = ({children}) => {
     )
 }
 
-export default AppointmentList
+export default AppointmentList;

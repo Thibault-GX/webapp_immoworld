@@ -23,7 +23,7 @@ export default function Navbar(props) {
         path:'/appointments',
         icon : 'calendar'
     },{
-        name : 'personnels',
+        name : 'Annuaire',
         path: '/users',
         icon : 'user-info'
     },{
