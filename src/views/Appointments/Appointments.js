@@ -48,7 +48,7 @@ const Appointments = () => {
             <Calendar onChange={onChange} onClickDay={OnclickDay} value={date} />
             <AppointmentList>
                 {appointments.map( function(appointment){
-                    return <Appointment appointment={appointment} key={appointment.id}></Appointment>
+                    return <Appointment appointment={appointment} key={appointment.id} id={appointment.id}></Appointment>
                 } )}
             </AppointmentList>
             <AddAppointment setAppointments={setAppointments} appointments={appointments}></AddAppointment>

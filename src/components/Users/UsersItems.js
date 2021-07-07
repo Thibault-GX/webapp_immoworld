@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from 'react'
+import React, {useState } from 'react'
 import {Modal, ButtonToolbar, Button} from 'rsuite';
 import tap from '../../assets/img/tap.png';
 

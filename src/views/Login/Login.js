@@ -30,7 +30,7 @@ export default function Login() {
         })
             .then(function (response) {
                 const {data} = response;
-                console.log(response);
+                console.log(data);
                 login(data.token, data.expires_in);
             })
             .catch(function (error) {

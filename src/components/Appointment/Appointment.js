@@ -1,13 +1,13 @@
-import React from 'react'
-import {Link} from 'react-router-dom';
+import React from 'react';
 import './Appointment.css';
+import AppointmentsDetails from '../AppointmentsDetails/AppointmentsDetails'
 
-const Appointment = ({appointment}) => {
+const Appointment = ({appointment, id}) => {
     return (
         <div className="Appointment">
             <h2>{appointment.contactName}</h2>
             <p>{appointment.dateTime}</p>
-            <Link to={{pathname: `/appointment/${appointment.id}`}} className="ButtonAppointmentsDetails">Détails</Link>
+            <AppointmentsDetails id={id}/>
         </div>
     )
 }

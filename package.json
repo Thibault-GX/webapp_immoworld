@@ -23,7 +23,8 @@
     "react-scripts": "3.4.1",
     "react-slick": "0.26.1",
     "react-swipeable-views": "0.13.9",
-    "rsuite": "^4.9.3"
+    "rsuite": "^4.9.3",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@babel/cli": "7.10.1",
