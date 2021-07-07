@@ -1,0 +1,21 @@
+.ButtonAppointmentsDetails{
+    border: 1px solid darkslategray;
+    background: rgb(14, 85, 129) !important;
+    color: white !important;
+    max-width: 10rem;;
+    height: 2.5rem;
+    font-size: 1.1rem !important;
+    font-weight: bold !important;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 4px 12px -3px darkslategray;
+    transition: 0.5s;
+}
+
+.ButtonAppointmentsDetails:hover{
+    background: white !important;
+    color: darkslategray !important;
+    transition: 0.5s;
+}

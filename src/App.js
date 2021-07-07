@@ -6,7 +6,7 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Home from "./views/Home/Home.js";
 import Header from "./components/Header/Header";
 import Appointments from "./views/Appointments/Appointments";
-import AppointmentsDetails from "./views/AppointmentsDetails/AppointmentsDetails";
+import AppointmentsDetails from "./components/AppointmentsDetails/AppointmentsDetails";
 import {AuthProvider} from "./context/auth";
 import Logout from "./components/Logout/Logout";
 import API from './api';

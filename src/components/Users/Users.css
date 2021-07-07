@@ -12,7 +12,6 @@
     bottom: 2rem;
     right: 2rem;
     box-shadow: 0px 0px 10px 3px grey;
-    border: 2px solid darkslategrey;
 }
 
 #addUserForm {
@@ -26,6 +25,9 @@
     flex-wrap: wrap;
 }
 
+.addUserFormErrors {
+    color: rgb(182, 1, 1);
+}
 .formGroup {
     display:flex;
     flex-direction: row;
@@ -80,18 +82,17 @@
     margin: 1rem;
     font-size: 1.2rem;
     font-weight: bold;
-    background: rgb(24,113,168);
-    background: linear-gradient(90deg, rgba(24,113,168,1) 0%, rgba(24,113,168,0.57) 81%, rgba(255,255,255,1) 90%); 
+    background: rgb(93, 174, 224);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 2px solid darkslategrey;
+    border: 1px solid darkslategrey;
     color: #fff;
     box-shadow: 0px 0px 5px 2px grey;
 }
 
 .modal-trigger-button:hover, .modal-trigger-button:focus, .modal-trigger-button:active {
-    background: #4169E1;
+    background:  rgba(24,113,168,1);
     color: white;
     transition: 0.5s;
 }
