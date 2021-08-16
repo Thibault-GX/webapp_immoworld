@@ -226,14 +226,14 @@ const AddUserForm = () => {
                             </Field>
                         </div>
                         <div>
-                            <Button type="submit" color="green" disabled={isSubmitting}>Ajouter</Button>
+                            <Button type="submit" appearance="primary" color="green" disabled={isSubmitting}>Ajouter</Button>
                         </div>
                     </Form>
                     )}
                 </Formik>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={toggleModalAddUser} appearance="primary">Annuler</Button>
+                    <Button onClick={toggleModalAddUser} appearance="primary" color="red">Annuler</Button>
                 </Modal.Footer>
             </Modal>
         </div>
