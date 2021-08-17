@@ -11,7 +11,7 @@
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    box-shadow: 0px 0px 10px 3px grey;
+    box-shadow: 0px 0px 3px 3px rgba(80, 100, 230, 0.5);
 }
 
 #addUserForm {
@@ -28,25 +28,28 @@
 .addUserFormErrors {
     color: rgb(182, 1, 1);
 }
+
 .formGroup {
-    display:flex;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
 }
+
 .formGroupItem {
     display: flex;
     flex-direction: column;
     width: 47%;
     margin-bottom: 1.2rem;
 }
+
 .formItem {
     display: flex;
     flex-direction: column;
     margin-bottom: 1.2rem;
 }
 
-.SelectAgencie{
+.SelectAgencie {
     display: block;
     /* width: 100%; */
     padding: .375rem 2.25rem .375rem .75rem;
@@ -86,18 +89,19 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid darkslategrey;
     color: #fff;
-    box-shadow: 0px 0px 5px 2px grey;
+    box-shadow: 0px 0px 3px 3px rgba(80, 100, 230, 0.5);
 }
 
-.modal-trigger-button:hover, .modal-trigger-button:focus, .modal-trigger-button:active {
-    background:  rgba(24,113,168,1);
+.modal-trigger-button:hover,
+.modal-trigger-button:focus,
+.modal-trigger-button:active {
+    background: rgba(24, 113, 168, 1);
     color: white;
     transition: 0.5s;
 }
 
-.modal-trigger-button > img {
+.modal-trigger-button>img {
     width: 2rem;
 }
 
@@ -106,7 +110,7 @@
     border: solid 1px darkslateblue;
     box-shadow: 0px 0px 10px 3px;
     font-weight: 600;
-    margin-left:auto;
+    margin-left: auto;
     margin-right: auto;
     margin-top: 25%;
     margin-bottom: 25%;
@@ -114,40 +118,47 @@
 
 .rs-btn-primary {
     font-weight: bold;
-    background-color: rgb(24,113,168);
+    background-color: rgb(24, 113, 168);
 }
 
 @media (max-width: 844px) {
     h1 {
         font-size: 1.5rem !important;
     }
+
     .modal-trigger-button {
         min-width: 100%;
         margin-left: auto;
         margin-right: auto;
         flex-wrap: wrap;
     }
+
     #userList {
         flex-direction: column;
     }
 }
+
 @media (max-width: 375px) {
     .modal-trigger-button {
         font-size: 1rem;
     }
+
     .rs-modal-wrapper {
         overflow: hidden;
     }
+
     .rs-modal-content {
         height: 50%;
         width: 360px;
         margin-top: 10%;
         margin-left: 0.5rem;
     }
+
     .formGroupItem {
         width: 100%;
         margin-bottom: 1.2rem;
     }
+
     .formItem {
         margin-bottom: 1.2rem;
     }

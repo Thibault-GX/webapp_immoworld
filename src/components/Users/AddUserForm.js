@@ -87,6 +87,22 @@ const AddUserForm = () => {
             .required('Ce champ doit être complété.'),
     });
 
+    const submitNewUser = values => {
+        API.post('users', {
+            firstname: values.firstname,
+            lastname: (values.lastname).toUpperCase(),
+            password: values.password,
+            email: values.email,
+            phone: values.phone,
+            pictureName: "0",
+            id_userRoles: values.id_userRoles,
+            id_agencies: values.id_agencies
+        })
+        .then(function (response) {
+            console.log(response);
+        })
+    }
+
     return (
         <div>
             <Button onClick={toggleModalAddUser} id="addUser" title="Ajouter un membre du personnel">+</Button>
@@ -108,9 +124,7 @@ const AddUserForm = () => {
                         'id_agencies': '',
                     }}
                     validationSchema={AddUserSchema}
-                    onSubmit={ async (values) => {
-                        alert(JSON.stringify(values, null, 2));
-                    }}
+                    onSubmit={ values => submitNewUser(values)}
                 >
                     {({ handleSubmit, handleChange, isSubmitting, errors, touched, values }) => (
                     <Form id="addUserForm" onSubmit={handleSubmit}>
@@ -126,7 +140,7 @@ const AddUserForm = () => {
                                     placeholder="ex : Pierre"
                                 />
                                 {errors.firstname && touched.firstname ? (
-                                    <div class="addUserFormErrors">{errors.firstname}</div>
+                                    <div className="addUserFormErrors">{errors.firstname}</div>
                                 ) : null}
                             </div>
                             <div className="formGroupItem">
@@ -140,7 +154,7 @@ const AddUserForm = () => {
                                     placeholder="ex : DUPONT"
                                 />
                                 {errors.lastname && touched.lastname ? (
-                                    <div class="addUserFormErrors">{errors.lastname}</div>
+                                    <div className="addUserFormErrors">{errors.lastname}</div>
                                 ) : null}
                             </div>
                         </div>
@@ -157,7 +171,7 @@ const AddUserForm = () => {
                                     placeholder="pierre.dupont@immoworld.fr"
                                 />
                                 {errors.email && touched.email ? (
-                                    <div class="addUserFormErrors">{errors.email}</div>
+                                    <div className="addUserFormErrors">{errors.email}</div>
                                 ) : null}
                             </div>
                             <div className="formGroupItem">
@@ -171,7 +185,7 @@ const AddUserForm = () => {
                                     placeholder="mot de passe"
                                 />
                                 {errors.password && touched.password? (
-                                    <div class="addUserFormErrors">{errors.password}</div>
+                                    <div className="addUserFormErrors">{errors.password}</div>
                                 ) : null}
                             </div>
                         </div>
@@ -186,7 +200,7 @@ const AddUserForm = () => {
                                 placeholder="+33 65 66 67 68"
                             />
                             {errors.phone && touched.phone ? (
-                                    <div class="addUserFormErrors">{errors.phone}</div>
+                                    <div className="addUserFormErrors">{errors.phone}</div>
                             ) : null}
                         </div>
                         <div className="formItem">
@@ -203,7 +217,7 @@ const AddUserForm = () => {
                                     return(<option key={i} value={userRole.role_id}>{userRole.role}</option>)
                                 })}
                             {errors.id_userRoles && touched.id_userRoles ? (
-                                    <div class="addUserFormErrors">{errors.id_userRoles}</div>
+                                    <div className="addUserFormErrors">{errors.id_userRoles}</div>
                             ) : null}
                             </Field>
                         </div>
@@ -221,7 +235,7 @@ const AddUserForm = () => {
                                     return(<option key={i} value={agencie.id}>{agencie.name}</option>)
                                 })}
                                 {errors.id_agencies && touched.id_agencies || touched.value == "" ? (
-                                    <div class="addUserFormErrors">{errors.id_agencies}</div>
+                                    <div className="addUserFormErrors">{errors.id_agencies}</div>
                                 ) : null}
                             </Field>
                         </div>

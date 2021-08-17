@@ -55,31 +55,31 @@ function formatDate() {
         let errors = false;  
 
         if (!formValues.contactName) {
-            contactNameError = "Le nom du client est requis";
+            contactNameError = "Le nom du client est requis.";
             errors = true;
         }else{
             contactNameError ="";
         }
         if (!formValues.date) {
-            dateError = "la date du rendez-vous est requise";
+            dateError = "La date du rendez-vous est requise.";
             errors = true;
         }else{
             dateError ="";
         }
         if (!formValues.appointmentAddress) {
-            appointmentAddressError = "L'adresse du rendez-vous est requise";
+            appointmentAddressError = "L'adresse du rendez-vous est requise.";
             errors = true;
         }else{
             appointmentAddressError ="";
         }
         if (!formValues.usersId) {
-            usersIdError = "le nom du commercial est requis";
+            usersIdError = "Le nom du commercial est requis.";
             errors = true;
         }else{
             usersIdError="";
         }
         if (!formValues.description) {
-            descriptionError =  "une description est requise";
+            descriptionError =  "Une description est requise.";
             errors = true;
         }else{
             descriptionError=""
