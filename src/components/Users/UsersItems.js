@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import {Modal, ButtonToolbar, Button} from 'rsuite';
-import tap from '../../assets/img/tap.png';
 
 
 function UsersItems({user}) {
@@ -14,7 +13,7 @@ function UsersItems({user}) {
     return (
         <div className="modal-container">
             <ButtonToolbar>
-                <Button className="modal-trigger-button" onClick={toggleModal} title={'Cliquez ici pour voir les informations de '+user.lastname+ ' ' + user.firstname}>{user.lastname+ ' ' + user.firstname}<img src={tap}/></Button>
+                <Button className="modal-trigger-button" onClick={toggleModal} title={'Cliquez ici pour voir les informations de '+user.lastname+ ' ' + user.firstname}>{user.lastname+ ' ' + user.firstname}</Button>
             </ButtonToolbar>
 
             <Modal show={show}>
