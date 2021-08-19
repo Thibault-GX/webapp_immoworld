@@ -2,7 +2,6 @@ import { MeetingRoom } from '@material-ui/icons';
 import API from 'api';
 import React from 'react'
 import { RangeSlider,Toggle ,Col, TagPicker ,Grid ,Row} from 'rsuite';
-import 'rsuite/dist/styles/rsuite-default.css';
 import EstateList from '../EstatesList/EstatesList'
 
 function EstatesFilter() {

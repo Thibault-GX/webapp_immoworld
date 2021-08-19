@@ -50,7 +50,7 @@ function AppointmentsDetails({id}) {
                 </Modal.Header>
                 <Modal.Body>
                     <p>Nom : {appointment.contactName}</p>
-                    <p>Adresse :  <a href={encodedUri} target="_blank">{appointment.appointmentAddress}</a></p>
+                    <p>Adresse :  <a href={encodedUri} target="_blank" rel="noopener noreferrer">{appointment.appointmentAddress}</a></p>
                     <p>Date du rendez-vous : {appointment.dateTime}</p>
                     <p>Description :  {appointment.description}</p>
                     <p>Commercial : {appointment.id_user}</p>

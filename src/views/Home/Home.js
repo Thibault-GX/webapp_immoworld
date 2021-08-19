@@ -1,5 +1,4 @@
 import React, {useEffect} from "react";
-import {Link} from 'react-router-dom';
 import API from '../../api';
 
 export default function Home(props) {
@@ -13,6 +12,6 @@ export default function Home(props) {
     // }, []);
 
     return (
-        <Link to={{pathname: '/login'}}>Go To Login</Link>
+        <h1>Bienvenue sur la page d'accueil d'Immoworld</h1>
     )
 }
