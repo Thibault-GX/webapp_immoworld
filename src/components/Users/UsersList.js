@@ -11,6 +11,9 @@ function UsersList() {
     const [agencies,setAgencies] = React.useState([]);
     const [selectagencies,setSelectAgencies] = React.useState({value:0});
 
+    // var currentUserToken = localStorage.getItem('id_userRoles');
+    // console.log(currentUserToken);
+
     React.useEffect(function(){
         API.get('users', {})
 
@@ -68,6 +71,7 @@ function UsersList() {
             
             {data.map((user, i) => {
                 if (user.role != 'Admin' && selectagencies.value == 0) {
+                    console.log(user.role_id)
                     return(
                         <UsersItems user={user} key={i}/>
                     )
@@ -78,7 +82,13 @@ function UsersList() {
                     )
                 }
             })}
-            <AddUserForm/>
+            {data.map((user) => {
+                if (user.role == 'Admin' || 'Directeur groupement' || 'Directeur d\'agence' ) {
+                    return(<AddUserForm/>)
+                } else {
+                    return null
+                }
+            })}
         </div>
     )
 }

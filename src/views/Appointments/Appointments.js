@@ -16,8 +16,7 @@ const Appointments = () => {
     const [currentDate, setCurrentDate] = useState(new Date(new Date().setHours(0,0,0,0)).getTime())
 
     React.useEffect(function(){
-        API.get(`appointments/?filter[where_date]=${currentDate}`, {
-        })
+        API.get(`appointments?filter[where_date]=${currentDate}`)
             .then(function (response) {
                 const {appointments:data} = response.data;
                 setAppointments(data);
