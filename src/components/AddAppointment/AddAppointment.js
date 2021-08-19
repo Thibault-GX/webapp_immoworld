@@ -20,7 +20,6 @@ const AddAppointment = ({setAppointments = null, appointments = null}) => {
         contactNameError : "",
         usersIdError : "",
         dateError : "",
-        description :""
     });
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);

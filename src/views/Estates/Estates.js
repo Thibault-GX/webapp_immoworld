@@ -3,7 +3,6 @@ import '../../views/Estates/Estates.css';
 import EstatesList from '../../components/Estate/EstatesList/EstatesList';
 import Estate from '../../components/Estate/Estate';
 import { Button, Col,Grid ,Row} from 'rsuite';
-import 'rsuite/dist/styles/rsuite-default.css';
 import API from 'api';
 
 import AvatarGeneration from 'components/Avatar/Avatar';

@@ -6,17 +6,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #4169E1;
+    background-color: royalblue;
     color: white;
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    box-shadow: 0px 0px 3px 3px rgba(80, 100, 230, 0.5);
 }
 
 #addUserForm {
     display: flex;
     flex-direction: column;
+}
+
+#addUserForm label {
+    color: #3a3838;
 }
 
 #userList {
@@ -72,7 +75,6 @@
 }
 
 .userItems {
-    background-color: lightgreen;
     min-width: 350px;
     max-width: 100%;
     margin: 5%;
@@ -90,7 +92,6 @@
     justify-content: space-between;
     align-items: center;
     color: #fff;
-    box-shadow: 0px 0px 3px 3px rgba(80, 100, 230, 0.5);
 }
 
 .modal-trigger-button:hover,
@@ -116,9 +117,14 @@
     margin-bottom: 25%;
 }
 
-.rs-btn-primary {
-    font-weight: bold;
-    background-color: rgb(24, 113, 168);
+button.user-button {
+    background-color: rgba(65, 105, 225);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+button.user-button.rs-btn-primary:hover {
+    background-color: #1C3A94;
 }
 
 @media (max-width: 844px) {
