@@ -14,36 +14,30 @@ function UsersList() {
     var currentUserToken = localStorage.getItem('id_userRoles');
     console.log(currentUserToken);
 
+    // users
     React.useEffect(function(){
         API.get('users', {})
 
         .then(function (response) {
             const {User:data} = response.data;
             setData(data);
-            console.log(data);
         })
         .catch(function (error) {
             if (error.response) {
-                // if (error.response.status === 401) {
-                //     setError('Identifiants incorrects');
-                // }
             }
         });    
     },[selectagencies])
-// agencies
+    
+    // agencies
     React.useEffect(function(){
         API.get('agencies', {})
 
         .then(function (response) {
             const {agencies:data} = response.data;
             setAgencies(data);
-            console.log(data);
         })
         .catch(function (error) {
             if (error.response) {
-                // if (error.response.status === 401) {
-                //     setError('Identifiants incorrects');
-                // }
             }
         });    
     },[])
@@ -53,8 +47,6 @@ function UsersList() {
         setSelectAgencies({...selectagencies, [name]: value})
         console.log(currentTarget);
     }
-
-    console.log(selectagencies);
 
     return (
         <div id="userList">
@@ -70,24 +62,17 @@ function UsersList() {
             </Col>
             
             {data.map((user, i) => {
-                if (user.role != 'Admin' && selectagencies.value == 0) {
+                if (user.role !== 'Admin' && selectagencies.value === 0) {
                     return(
                         <UsersItems user={user} key={i}/>
-                    )
-                
-                } else if (user.role != 'Admin' && user.agencie_id == selectagencies.value) {
+                    ) 
+                } else if (user.role !== 'Admin' && user.agencie_id == selectagencies.value) {
                     return(
                         <UsersItems user={user} key={i}/>
                     )
                 }
             })}
-            {data.map((user) => {
-                if (user.role == 'Admin' || 'Directeur groupement' || 'Directeur d\'agence' ) {
-                    return(<AddUserForm/>)
-                } else {
-                    return null
-                }
-            })}
+            <AddUserForm/>
         </div>
     )
 }

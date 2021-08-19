@@ -1,32 +1,15 @@
 import React, { useState } from 'react';
-import { Button, Modal, SelectPicker } from 'rsuite';
+import { Button, Modal } from 'rsuite';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import API from 'api';
 
 const AddUserForm = () => {
 
-    const [data,setData] = React.useState([]);
     const [agencies,setAgencies] = React.useState([]);
-    const [selectagencies,setSelectAgencies] = React.useState({value:0});
+    const [userRoles,setUserRoles] = React.useState([]);
 
-    React.useEffect(function(){
-        API.get('users', {})
-
-        .then(function (response) {
-            const {User:data} = response.data;
-            setData(data);
-            console.log(data);
-        })
-        .catch(function (error) {
-            if (error.response) {
-                // if (error.response.status === 401) {
-                //     setError('Identifiants incorrects');
-                // }
-            }
-        });    
-    },[selectagencies])
-// agencies
+    // agencies
     React.useEffect(function(){
         API.get('agencies', {})
 
@@ -37,18 +20,24 @@ const AddUserForm = () => {
         })
         .catch(function (error) {
             if (error.response) {
-                // if (error.response.status === 401) {
-                //     setError('Identifiants incorrects');
-                // }
             }
         });    
     },[])
 
-    const handleChange = ({currentTarget}) => {
-        const {name, value} = currentTarget;
-        setSelectAgencies({...selectagencies, [name]: value})
-        console.log(currentTarget);
-    }
+    // user roles
+    React.useEffect(function(){
+        API.get('userroles', {})
+
+        .then(function (response) {
+            const {userRoles:data} = response.data;
+            setUserRoles(data);
+            console.log(data);
+        })
+        .catch(function (error) {
+            if (error.response) {
+            }
+        });    
+    },[])
 
     const [showAddUser, showModalAddUser] = useState(false);
 
@@ -99,7 +88,7 @@ const AddUserForm = () => {
             id_agencies: values.id_agencies
         })
         .then(function (response) {
-            console.log(response);
+            alert('Le nouvel utilisateur a été ajouté avec succès.');
         })
     }
 
@@ -213,8 +202,8 @@ const AddUserForm = () => {
                                 value={values.id_userRoles}
                             >
                                 <option>Sélectionnez le rôle du nouvel utilisateur</option>
-                                {data.map((userRole, i) => {
-                                    return(<option key={i} value={userRole.role_id}>{userRole.role}</option>)
+                                {userRoles.map((userRoles, i) => {
+                                    return(<option key={i} value={userRoles.id}>{userRoles.name}</option>)
                                 })}
                             {errors.id_userRoles && touched.id_userRoles ? (
                                     <div className="addUserFormErrors">{errors.id_userRoles}</div>
@@ -234,7 +223,7 @@ const AddUserForm = () => {
                                 {agencies.map((agencie, i) => {
                                     return(<option key={i} value={agencie.id}>{agencie.name}</option>)
                                 })}
-                                {errors.id_agencies && touched.id_agencies || touched.value == "" ? (
+                                {errors.id_agencies && (touched.id_agencies || touched.value) === "" ? (
                                     <div className="addUserFormErrors">{errors.id_agencies}</div>
                                 ) : null}
                             </Field>

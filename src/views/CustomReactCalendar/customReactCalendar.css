@@ -9,25 +9,41 @@
     border-radius: 15px 15px 0px 0px;
     box-shadow: 0px 0px 8px 2px grey;
 }
-.react-calendar__tile--active{
+
+.react-calendar__tile--active {
     color: white !important;
     background-color: blue !important;
 }
 
 
-.react-calendar__navigation__next2-button ,.react-calendar__navigation__arrow ,.react-calendar__navigation__next-button ,.react-calendar__navigation__prev2-button,.react-calendar__navigation__label{
+.react-calendar__navigation__next2-button,
+.react-calendar__navigation__arrow,
+.react-calendar__navigation__next-button,
+.react-calendar__navigation__prev2-button,
+.react-calendar__navigation__label {
     color: white;
     font-size: 1.5rem;
     text-transform: capitalize;
 }
 
-.react-calendar__navigation button:enabled:hover, .react-calendar__navigation button:enabled:focus{
-    background-color: rgb(65, 65, 253) !important;
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+    background-color: royalblue !important;
     border-radius: 15px;
 }
 
-.react-calendar__viewContainer{
-    background-color: rgba(21, 21, 223, 0.747);
+.react-calendar {
+    background-color: royalblue;
+    margin-bottom: 1.5rem;
+}
+
+.react-calendar__tile--active {
+    color: white !important;
+    background-color: royalblue !important;
+}
+
+.react-calendar__viewContainer {
+    background-color: royalblue;
     color: rgb(226, 195, 238);
     text-decoration: none;
     font-size: 1.2rem;
@@ -35,7 +51,7 @@
     text-transform: capitalize;
 }
 
-.react-calendar__month-view__days button{
+.react-calendar__month-view__days button {
     background-color: rgb(255, 255, 255);
     height: 80px;
     text-align: right;
@@ -49,6 +65,7 @@
     .react-calendar {
         width: 100%;
     }
+
     .react-calendar__navigation__label__labelText {
         line-height: 1.5rem;
     }

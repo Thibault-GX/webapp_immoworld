@@ -2,10 +2,18 @@
     padding: 10px 20px;
     font-size: 1.2rem;
     font-weight: bold;
+    color: white;
 }
 
-.NavbarLinksItem:hover,.active {
+.NavbarLinksItem:active,
+.active {
     background-color: royalblue;
-    color: white !important;
+    color: white;
+    text-decoration: none !important;
+}
+
+.NavbarLinksItem:hover {
+    background-color: #1C3A94;
+    color: white;
     text-decoration: none !important;
 }

@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import './Login.css';
-import Logo from '../../assets/img/examples/clem-onojegaw.jpg'
 import Alert from "../../components/Alert/Alert";
 import {useAuth} from "../../context/auth";
 import {Redirect} from "react-router-dom";

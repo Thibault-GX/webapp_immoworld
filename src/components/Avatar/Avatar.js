@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { Button } from 'rsuite';
+import React from 'react';
 import './Avatar.css';
 import {NavLink} from "react-router-dom";
 import { Input, InputGroup ,Icon} from 'rsuite';
@@ -30,7 +29,7 @@ function numberFromInitials(UserInitials) {
 export default function AvatarGeneration(props) {
     const styles = {
         width: 300,
-      };
+    };
     // récupération des éléménts possédant la classe .avatar
     const avatar = document.querySelectorAll('.avatar');
 
@@ -38,24 +37,24 @@ export default function AvatarGeneration(props) {
         const text = avatar.innerText;
         avatar.style.backgroundColor = colors[numberFromInitials(text) % colors.length];
         
-      });
+    });
 
-      return (
-          <div className="SubjectBar">
-              <NavLink exact to={props.path} className="buttonSubjectbar">
-                  {props.name}
-              </NavLink>
-              <InputGroup inside style={styles} >
+    return (
+        <div className="SubjectBar">
+            <NavLink exact to={props.path} className="buttonSubjectbar">
+                {props.name}
+            </NavLink>
+            <InputGroup inside style={styles} >
                 <Input placeholder="Rechercher..." />
                     <InputGroup.Button>
                         <Icon icon="search" />
                     </InputGroup.Button>
                 </InputGroup>
-             <div 
+            <div 
                 className="avatar" 
                 title={props.firstname+' '+props.lastname}
                 >{ UserInitials(props) }
             </div>
-          </div>
-       );
+        </div>
+    );
 }

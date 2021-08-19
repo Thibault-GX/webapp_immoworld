@@ -14,6 +14,7 @@ import {useAuth} from "./context/auth";
 import Estates from "views/Estates/Estates";
 import Login from "views/Login/Login";
 import UsersList from "components/Users/UsersList";
+import 'rsuite/dist/styles/rsuite-default.css';
 
 const hist = createBrowserHistory();
 
