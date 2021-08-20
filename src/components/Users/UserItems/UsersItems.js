@@ -23,10 +23,10 @@ function UsersItems({user}) {
                 </Modal.Header>
                 <Modal.Body>
                     <div>
-                        <p>Agence : {user.agencie}</p>
+                        <p>Agence : {user.agencie_name}</p>
                         <p>Téléphone : <a href={"tel:"+user.phone}>{user.phone}</a></p>
                         <p>Email : <a href={"mailto:"+user.email}>{user.email}</a></p>
-                        <p>Role : {user.role}</p>
+                        <p>Role : {user.role_name}</p>
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
