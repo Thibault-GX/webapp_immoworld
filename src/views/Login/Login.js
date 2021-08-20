@@ -44,7 +44,6 @@ export default function Login() {
     return (
         <div className="Login">
             {redirect}
-
             {/* <img src={Logo} className="LogoConnection"></img> */}
             <div className="Connection">
                 <h2 className="Titlelogin">Immoworld Connexion</h2>

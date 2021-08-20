@@ -11,8 +11,8 @@ function UsersList() {
     const [agencies,setAgencies] = React.useState([]);
     const [selectagencies,setSelectAgencies] = React.useState({value:0});
 
-    var currentUserToken = localStorage.getItem('id_userRoles');
-    console.log(currentUserToken);
+    // var currentUserToken = localStorage.getItem('id_userRoles');
+    // console.log(currentUserToken);
 
     // users
     React.useEffect(function(){
