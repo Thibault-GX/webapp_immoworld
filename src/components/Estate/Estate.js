@@ -1,6 +1,5 @@
 import React from 'react'
 import '../../components/Estate/Estate.css'
-import Logo from '../../assets/img/examples/clem-onojegaw.jpg'
 import { Panel } from 'rsuite';
 
 function Estate({estate}) {
@@ -8,7 +7,7 @@ function Estate({estate}) {
     return (
         <div className="show-grid EstatesCard">
             <Panel shaded bordered bodyFill style={{ display: 'inline-block', width: 300 }}>
-                <img src="https://via.placeholder.com/240x240" height="300" />
+                <img src="https://via.placeholder.com/240x240" alt="" height="300" />
                 <Panel header={estate.label}>
                 <p>
                     <p>Surface au sol : {estate.rawSurface} m²</p>

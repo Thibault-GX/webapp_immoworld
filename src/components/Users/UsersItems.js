@@ -13,7 +13,7 @@ function UsersItems({user}) {
     return (
         <div className="modal-container">
             <ButtonToolbar>
-                <Button className="modal-trigger-button" onClick={toggleModal} title={'Cliquez ici pour voir les informations de '+user.lastname+ ' ' + user.firstname}>{user.lastname+ ' ' + user.firstname}</Button>
+                <Button appearance="primary" className="modal-trigger-button user-button" onClick={toggleModal} title={'Cliquez ici pour voir les informations de '+user.lastname+ ' ' + user.firstname}>{user.lastname+ ' ' + user.firstname}</Button>
             </ButtonToolbar>
 
             <Modal show={show}>

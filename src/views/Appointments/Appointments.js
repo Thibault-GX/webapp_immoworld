@@ -22,8 +22,9 @@ const Appointments = () => {
                 setAppointments(data);
             })
             .catch(function (error) {
+                console.log(error);
                 if (error.response) {
-                    if (error.response.status === 404) {
+                    if (error.response.status === 403) {
                         setError("Vous n'êtes pas connecté");
                     }
                 }
@@ -37,7 +38,7 @@ const Appointments = () => {
 
     function OnclickDay(date,event){
         var change = event.target;
-        setCurrentDate(new Date(date.setHours(0,0,0,0)).getTime());
+        setCurrentDate(new Date(date.setHours(0,0,0,0)).getTime(), change);
     }
 
     return (

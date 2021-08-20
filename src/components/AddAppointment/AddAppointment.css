@@ -7,3 +7,11 @@
         max-width: 100%;
     }
 }
+
+.InputConnectionSend {
+    background-color: royalblue !important;
+}
+
+label {
+    margin-top: 0.8rem;
+}
