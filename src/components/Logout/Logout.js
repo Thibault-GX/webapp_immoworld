@@ -1,11 +1,18 @@
-import React, {useEffect} from 'react';
-import {useAuth} from "../../context/auth";
-import {Redirect} from "react-router-dom";
+import React ,{useCallback} from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import {logout} from '../../Store/AuthAction'
 
-export default function Logout() {
-    const {logout} = useAuth();
-    useEffect(() => {
-        logout();
-    });
-    return (<Redirect to="/login" />);
+
+function Logout() {
+    const dispatch = useDispatch();
+    const handleLogout = useCallback(
+        () => {
+            dispatch(logout())
+        },
+        [dispatch],
+      )
+      handleLogout()  
+    return (<div></div>)
 }
+
+export default Logout
