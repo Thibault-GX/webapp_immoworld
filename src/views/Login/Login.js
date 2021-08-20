@@ -28,10 +28,7 @@ function Login() {
     return (
         <div className="Login">
             {redirect}
-<<<<<<< HEAD
-            {/* <img src={Logo} className="LogoConnection"></img> */}
-=======
->>>>>>> master
+
             <div className="Connection">
                 <Formik
                     initialValues ={{
