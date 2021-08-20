@@ -62,11 +62,11 @@ function UsersList() {
             </Col>
             
             {data.map((user, i) => {
-                if (user.role !== 'Admin' && selectagencies.value == 0) {
+                if (user.role_name != 'Admin' && selectagencies.value == 0 && user.activeUser == true) {
                     return(
                         <UsersItems user={user} key={i}/>
                     ) 
-                } else if (user.role !== 'Admin' && user.agencie_id == selectagencies.value) {
+                } else if (user.role_name != 'Admin' && user.agencie_id == selectagencies.value && user.activeUser == true) {
                     return(
                         <UsersItems user={user} key={i}/>
                     )
