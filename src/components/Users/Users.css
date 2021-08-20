@@ -117,6 +117,10 @@
     margin-bottom: 25%;
 }
 
+.rs-modal-body p {
+    color: #3a3838;
+}
+
 button.user-button {
     background-color: rgba(65, 105, 225);
     font-weight: 600;
