@@ -7,6 +7,7 @@
     justify-content: center;
     align-items: center;
     background-color: royalblue;
+    border: 5px solid rgb(150, 149, 149);
     color: white;
     position: fixed;
     bottom: 2rem;
