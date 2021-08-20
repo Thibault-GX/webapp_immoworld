@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import './App.css';
 import {createBrowserHistory} from "history";
 import {Route, Router, Switch, useLocation} from "react-router-dom";
@@ -12,13 +12,22 @@ import Logout from "./components/Logout/Logout";
 import API from './api';
 import {useAuth} from "./context/auth";
 import Estates from "views/Estates/Estates";
-import Login from "views/Login/Login";
+import Login from "./views/Login/Login";
 import UsersList from "components/Users/UsersList";
 import 'rsuite/dist/styles/rsuite-default.css';
+import Store from './Store/AuthReducer';
+import {Provider} from 'react-redux';
+import {logout} from './Store/AuthAction'
+import { useDispatch, useSelector } from 'react-redux';
+import AvatarGeneration from "components/Avatar/Avatar";
 
 const hist = createBrowserHistory();
 
 const Routes = () => {
+    const state = useSelector(state => state);
+    console.log(state);
+    const lastname = state.islogged ? state.data.lastname : "" ;
+    const firstname = state.islogged ? state.data.firstname : "";
 
     const [showHeader, setShowHeader] = useState(false);
 
@@ -48,14 +57,14 @@ const Routes = () => {
         <div>
             {showHeader ? (<Header/>) : null}
             <main className={screen.x > 1024 ? !showHeader ? ("no-padding") : null : "mainMobile" } id="mainMobile">
-                {/* {showHeader ? <AvatarGeneration name="+" path="/addEstates" firstname="Brian" lastname="Fontaine"/> : null} */}
+                {showHeader ? <AvatarGeneration name="+" path="/addEstates" firstname={firstname} lastname={lastname}/> : null}
                 <Switch>
-                    <PrivateRoute exact path="/" component={Home}/>
+                    <PrivateRoute exact path="/home" component={Home}/>
                     <PrivateRoute path="/logout" component={Logout}/>
                     <PrivateRoute path="/estates" component={Estates}/>
                     <PrivateRoute path="/appointments" component={Appointments}/>
                     <PrivateRoute path="/users" component={UsersList}/>
-                    <Route path="/login" component={Login}/> 
+                    <Route path="/" component={Login}/> 
                     <PrivateRoute path="/appointment/:id" component={AppointmentsDetails} />
                 </Switch>
             </main>
@@ -64,11 +73,20 @@ const Routes = () => {
 }
 
 const WithAxios = ({children}) => {
-    console.log(children.props);
-    const {isUserAuth, logout} = useAuth();
+    const state = useSelector(state => state);
+    const isUserAuth = state.islogged;
+    const dispatch = useDispatch();
+  
+    const handleLogout = useCallback(
+      () => {
+          dispatch(logout())
+      },
+      [dispatch],
+    )
+
     API.interceptors.request.use(req => {
         if (isUserAuth) {
-            const token = localStorage.getItem('token');
+            const token = state.data.token;
             req.headers.authorization = `Bearer ${token}`;
         }
         return req;
@@ -77,7 +95,7 @@ const WithAxios = ({children}) => {
     API.interceptors.response.use(res => res,
         error => {
             if (error.response.status === 401) {
-                logout();
+                handleLogout();
             }
             return Promise.reject(error);
         }
@@ -94,7 +112,7 @@ const WithAxios = ({children}) => {
  */
 const App = () => {
     return (
-        <AuthProvider>
+        <Provider store={Store}>
             <WithAxios>
                 <div className="App">
                     <Router history={hist}>
@@ -102,7 +120,7 @@ const App = () => {
                     </Router>
                 </div>
             </WithAxios>
-        </AuthProvider>
+        </Provider>
     );
 }
 
