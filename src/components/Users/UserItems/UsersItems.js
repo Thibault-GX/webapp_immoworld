@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {Modal, ButtonToolbar, Button} from 'rsuite';
+import DeleteUser from './../DeleteUser/DeleteUser';
 
 
 function UsersItems({user}) {
@@ -22,13 +23,14 @@ function UsersItems({user}) {
                 </Modal.Header>
                 <Modal.Body>
                     <div>
-                        <p>Agence : {user.agencie}</p>
+                        <p>Agence : {user.agencie_name}</p>
                         <p>Téléphone : <a href={"tel:"+user.phone}>{user.phone}</a></p>
                         <p>Email : <a href={"mailto:"+user.email}>{user.email}</a></p>
-                        <p>Role : {user.role}</p>
+                        <p>Role : {user.role_name}</p>
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
+                    <DeleteUser user={user}/>
                     <Button onClick={toggleModal} appearance="primary">Fermer</Button>
                 </Modal.Footer>
             </Modal>

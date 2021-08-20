@@ -1,80 +1,69 @@
-import React, {useState} from "react";
-import './Login.css';
-import Alert from "../../components/Alert/Alert";
-import {useAuth} from "../../context/auth";
+import React, {useCallback} from 'react'
+import validationFormLogin from './ValidationFormLogin';
+import TextFiled from './TextFiled';
+import { Formik, Form } from 'formik';
+import { useSelector, useDispatch } from 'react-redux';
+import {login} from '../../Store/AuthAction'
+import { Button, Message } from 'rsuite';
 import {Redirect} from "react-router-dom";
-import API from '../../api';
+import './login.css';
 
+function Login() {
+    const state = useSelector(state => state)
+    const dispatch = useDispatch()
+    const isloading = state.loading;
+    const isAuth = state.islogged;
+    const isError = state.error;
 
-export default function Login() {
+    const redirect = isAuth ? <Redirect to="/home"/> : null;
 
-    const [user, setUser] = useState({username: "", password: ""});
-    const [error, setError] = useState(null);
-    const {isUserAuth, login} = useAuth();
+    const handleSubmit = useCallback(
+        (values) => {
+            dispatch(login(values));
+        },
+        [dispatch],
+    )
+  
 
-    const redirect = isUserAuth ? <Redirect to="/"/> : null;
-
-    const handleChange = ({currentTarget}) => {
-        const {name, value} = currentTarget;
-        setUser({...user, [name]: value})
-    }
-
-    const handleSubmit = e => {
-        e.preventDefault();
-        setError(null);
-
-        API.post(`auth`, {
-            email: user.username,
-            password: user.password
-        })
-            .then(function (response) {
-                const {data} = response;
-                console.log(data);
-                login(data.token, data.expires_in);
-            })
-            .catch(function (error) {
-                if (error.response) {
-                    if (error.response.status === 401) {
-                        setError('Identifiants incorrects');
-                    }
-                }
-            });
-    }
-    // document.querySelector('#mainMobile').className='no-padding'
     return (
         <div className="Login">
             {redirect}
+<<<<<<< HEAD
             {/* <img src={Logo} className="LogoConnection"></img> */}
+=======
+>>>>>>> master
             <div className="Connection">
-                <h2 className="Titlelogin">Immoworld Connexion</h2>
-                {error ? <Alert message={error} impact='danger'/> : null}
-                <form className="FormConnection" onSubmit={handleSubmit}>
-                    <label className="LabelConnection">
-                        Nom d'utilisateur :
-                        <input
-                            type="text"
-                            name="username"
-                            className="InputConnection"
-                            onChange={handleChange}
-                        />
-                    </label>
-                    <label className="LabelConnection">
-                        Mot de passe :
-                        <input
-                            type="password"
-                            name="password"
-                            className="InputConnection"
-                            onChange={handleChange}
-                        />
-                    </label>
-                    <input
-                        type="submit"
-                        value="Connexion"
-                        className="InputConnectionSend"
-                    />
-                </form>
+                <Formik
+                    initialValues ={{
+                        email: "",
+                        password: "",
+                    }}
+                    validationSchema={validationFormLogin}
+                    onSubmit={values => handleSubmit(values)}
+                >
+                    {formik => (
+                        <div className="Connection">
+                            <h1 className="Titlelogin" >Connexion</h1>
+                            <Form className="FormConnection">
+                                <TextFiled type='text' label='Email :' name='email' id='email' className="InputConnection"/>   
+                                <TextFiled type='password' label='Mot de passe :' name='password' id='password' className="InputConnection"/>   
+                                <Button className="buttonLoging" appearance="primary" loading={isloading} type="submit" >Se connecter</Button>
+                                {isError ?          
+                                <Message
+                                    showIcon
+                                    type="error"
+                                    title={isError.message}
+                                /> : null
+                            }
+                            </Form>
+                        </div>
+                    )}
+                </Formik>
+                
             </div>
         </div>
-
     )
 }
+
+export default Login
+

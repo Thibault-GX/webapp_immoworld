@@ -8,6 +8,11 @@ const AddUserForm = () => {
 
     const [agencies,setAgencies] = React.useState([]);
     const [userRoles,setUserRoles] = React.useState([]);
+    const [showAddUser, showModalAddUser] = useState(false);
+
+    const toggleModalAddUser = () => {
+        showModalAddUser(!showAddUser);
+    }
 
     // agencies
     React.useEffect(function(){
@@ -39,18 +44,12 @@ const AddUserForm = () => {
         });    
     },[])
 
-    const [showAddUser, showModalAddUser] = useState(false);
-
-    const toggleModalAddUser = () => {
-        showModalAddUser(!showAddUser);
-    }
-
     const AddUserSchema = Yup.object().shape({
         firstname: Yup.string()
             .trim()
             .min(2, 'Le prénom est trop court.')
             .max(50, 'Le prénom est trop long.')
-            .matches(/^([A-ZÀ-ÿa-z][-,a-z. ']+[ ]*)+$/, 'Votre prénom comporte des caractères invalides.')
+            .matches(/^([A-ZÀ-ÿa-z][-,a-zà-ÿ. ']+[ ]*)+$/, 'Votre prénom comporte des caractères invalides.')
             .required('Ce champ doit être complété.'),
         lastname: Yup.string()
             .trim()
@@ -83,12 +82,13 @@ const AddUserForm = () => {
             password: values.password,
             email: values.email,
             phone: values.phone,
-            pictureName: "0",
+            activeUser: true,
             id_userRoles: values.id_userRoles,
             id_agencies: values.id_agencies
         })
         .then(function (response) {
             alert('Le nouvel utilisateur a été ajouté avec succès.');
+            toggleModalAddUser();
         })
     }
 
@@ -109,6 +109,7 @@ const AddUserForm = () => {
                         'email': '',
                         'password': '',
                         'phone': '',
+                        'activeUser': '',
                         'id_userRoles': '',
                         'id_agencies': '',
                     }}
