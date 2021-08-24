@@ -1,5 +1,4 @@
 import React, {useCallback, useEffect, useState} from "react";
-import './App.css';
 import {createBrowserHistory} from "history";
 import {Route, Router, Switch, useLocation} from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
@@ -7,10 +6,8 @@ import Home from "./views/Home/Home.js";
 import Header from "./components/Header/Header";
 import Appointments from "./views/Appointments/Appointments";
 import AppointmentsDetails from "./components/AppointmentsDetails/AppointmentsDetails";
-import {AuthProvider} from "./context/auth";
 import Logout from "./components/Logout/Logout";
 import API from './api';
-import {useAuth} from "./context/auth";
 import Estates from "views/Estates/Estates";
 import Login from "./views/Login/Login";
 import UsersList from "components/Users/UsersList";
@@ -19,7 +16,7 @@ import Store from './Store/AuthReducer';
 import {Provider} from 'react-redux';
 import {logout} from './Store/AuthAction'
 import { useDispatch, useSelector } from 'react-redux';
-import AvatarGeneration from "components/Avatar/Avatar";
+import Avatar from "components/Avatar/Avatar";
 
 const hist = createBrowserHistory();
 
@@ -33,7 +30,7 @@ const Routes = () => {
 
     const {pathname} = useLocation();
 
-    const hiddenInRoutes = ['/login'];
+    const hiddenInRoutes = ['/', '/login'];
 
 
     const [screen, setScreen] = React.useState({
@@ -48,16 +45,15 @@ const Routes = () => {
 
     React.useEffect(function() {
         window.addEventListener('resize', function(){
-          setScreen({ x : window.screen.width, y : window.screen.height});
+            setScreen({ x : window.screen.width, y : window.screen.height});
         });
     },[change,setChange])
 
     // Retourne les différentes routes et le header.
     return (
         <div>
-            {showHeader ? (<Header/>) : null}
+            {showHeader ? (<Header firstname={firstname} lastname={lastname}/>) : null}
             <main className={screen.x > 1024 ? !showHeader ? ("no-padding") : null : "mainMobile" } id="mainMobile">
-                {showHeader ? <AvatarGeneration name="+" path="/addEstates" firstname={firstname} lastname={lastname}/> : null}
                 <Switch>
                     <PrivateRoute exact path="/home" component={Home}/>
                     <PrivateRoute path="/logout" component={Logout}/>
@@ -76,12 +72,12 @@ const WithAxios = ({children}) => {
     const state = useSelector(state => state);
     const isUserAuth = state.islogged;
     const dispatch = useDispatch();
-  
+
     const handleLogout = useCallback(
-      () => {
-          dispatch(logout())
-      },
-      [dispatch],
+        () => {
+            dispatch(logout())
+        },
+        [dispatch],
     )
 
     API.interceptors.request.use(req => {

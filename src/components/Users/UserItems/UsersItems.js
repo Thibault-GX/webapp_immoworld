@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {Modal, ButtonToolbar, Button} from 'rsuite';
 import DeleteUser from './../DeleteUser/DeleteUser';
-
+import Avatar from './../../Avatar/Avatar';
 
 function UsersItems({user}) {
     
@@ -14,7 +14,10 @@ function UsersItems({user}) {
     return (
         <div className="modal-container">
             <ButtonToolbar>
-                <Button appearance="primary" className="modal-trigger-button user-button" onClick={toggleModal} title={'Cliquez ici pour voir les informations de '+user.lastname+ ' ' + user.firstname}>{user.lastname+ ' ' + user.firstname}</Button>
+                <Button appearance="primary" className="modal-trigger-button user-button" onClick={toggleModal} title={'Cliquez ici pour voir les informations de '+user.lastname+ ' ' + user.firstname}>
+                    <Avatar firstname={user.firstname} lastname={user.lastname} />
+                    {user.lastname+ ' ' + user.firstname}
+                </Button>
             </ButtonToolbar>
 
             <Modal show={show}>

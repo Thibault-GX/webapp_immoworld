@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {login} from '../../Store/AuthAction'
 import { Button, Message } from 'rsuite';
 import {Redirect} from "react-router-dom";
-import './login.css';
+import './Login.css';
 
 function Login() {
     const state = useSelector(state => state)

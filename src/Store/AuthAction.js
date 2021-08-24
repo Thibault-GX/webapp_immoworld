@@ -9,17 +9,16 @@ export function login({email, password}) {
         Api.post('auth', {
             email,
             password,
-         })
-         .then((response) => {
+        })
+        .then((response) => {
             const data = response.data;
             console.log(data);
             dispatch(loginSuccess(data));
-         })
-         .catch((error) => {
+        })
+        .catch((error) => {
             if (error.response.status == 401) {
-                dispatch(loginFailure({status : error.response.status, message : 'Identifiants incorrect'}));
+                dispatch(loginFailure({status : error.response.status, message : 'Identifiants incorrects'}));
             }
-             
         });
     }
 }
