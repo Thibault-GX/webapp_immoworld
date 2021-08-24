@@ -39,7 +39,7 @@ export default function Navbar(props) {
     
     React.useEffect(function() {
         window.addEventListener('resize', function(){
-          setScreen({ x : window.screen.width, y : window.screen.height});
+            setScreen({ x : window.screen.width, y : window.screen.height});
         });
     },[change,setChange])
 

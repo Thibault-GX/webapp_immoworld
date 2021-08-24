@@ -126,6 +126,9 @@ button.user-button {
     background-color: rgba(65, 105, 225);
     font-weight: 600;
     font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
 }
 
 button.user-button.rs-btn-primary:hover {
@@ -146,6 +149,17 @@ button.user-button.rs-btn-primary:hover {
 
     #userList {
         flex-direction: column;
+    }
+
+    button.user-button {
+        flex-wrap: wrap;
+        height: 3.5rem;
+        justify-content: space-between;
+        align-content: center;
+    }
+
+    div.modal-container:nth-child(9)>div:nth-child(1)>button:nth-child(1) {
+        margin-bottom: 8rem;
     }
 }
 
@@ -173,4 +187,11 @@ button.user-button.rs-btn-primary:hover {
     .formItem {
         margin-bottom: 1.2rem;
     }
+
+    button.user-button {
+        flex-direction: column;
+        height: auto;
+        justify-content: space-around;
+    }
+
 }
