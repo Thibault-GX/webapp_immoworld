@@ -1,10 +1,12 @@
 import {LOGIN_START,LOGOUT,LOGIN_SUCCESS,LOGIN_FAILURE} from './ActionTypes';
 import Api from '../api';
+import Cookies from 'js-cookie'
 
 export function login({email, password}) {
     console.log(email, password);
     return dispatch => {
         dispatch(loginStart())
+        Cookies.set('loading', false);
         
         Api.post('auth', {
             email,
@@ -14,6 +16,7 @@ export function login({email, password}) {
             const data = response.data;
             console.log(data);
             dispatch(loginSuccess(data));
+            Cookies.set('isLoggedIn', true);
         })
         .catch((error) => {
             if (error.response.status == 401) {

@@ -3,10 +3,10 @@ import {createStore, applyMiddleware} from 'redux'
 import Thunk from 'redux-thunk'
 
 const initialState = {
-    loading:false,
+    loading:Cookies.get('loading')|| false,
     data:null,
     error:null,
-    islogged:false
+    islogged:Cookies.get('isLoggedIn')||false
 }
 
 function AuthReducer(state=initialState,action) {

@@ -109,13 +109,13 @@ const WithAxios = ({children}) => {
 const App = () => {
     return (
         <Provider store={Store}>
-            <WithAxios>
+            {/* <WithAxios> */}
                 <div className="App">
                     <Router history={hist}>
                         <Routes/>
                     </Router>
                 </div>
-            </WithAxios>
+            {/* </WithAxios> */}
         </Provider>
     );
 }
