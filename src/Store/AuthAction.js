@@ -17,6 +17,8 @@ export function login({email, password}) {
             console.log(data);
             dispatch(loginSuccess(data));
             Cookies.set('isLoggedIn', true);
+            Cookies.set('lastname', data.lastname);
+            Cookies.set('firstname', data.firstname);
         })
         .catch((error) => {
             if (error.response.status == 401) {

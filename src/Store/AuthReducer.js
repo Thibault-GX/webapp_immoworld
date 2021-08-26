@@ -1,10 +1,11 @@
-import {LOGIN_START,LOGOUT,LOGIN_SUCCESS,LOGIN_FAILURE} from './ActionTypes'
-import {createStore, applyMiddleware} from 'redux'
-import Thunk from 'redux-thunk'
+import {LOGIN_START,LOGOUT,LOGIN_SUCCESS,LOGIN_FAILURE} from './ActionTypes';
+import {createStore, applyMiddleware} from 'redux';
+import Thunk from 'redux-thunk';
+import Cookies from 'js-cookie';
 
 const initialState = {
     loading:Cookies.get('loading')|| false,
-    data:null,
+    data:Cookies.get('userData') || null,
     error:null,
     islogged:Cookies.get('isLoggedIn')||false
 }

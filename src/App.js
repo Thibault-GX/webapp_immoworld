@@ -16,15 +16,15 @@ import Store from './Store/AuthReducer';
 import {Provider} from 'react-redux';
 import {logout} from './Store/AuthAction'
 import { useDispatch, useSelector } from 'react-redux';
-import Avatar from "components/Avatar/Avatar";
+import Cookies from 'js-cookie';
 
 const hist = createBrowserHistory();
 
 const Routes = () => {
     const state = useSelector(state => state);
     console.log(state);
-    const lastname = state.islogged ? state.data.lastname : "" ;
-    const firstname = state.islogged ? state.data.firstname : "";
+    const lastname = Cookies.get('lastname') ;
+    const firstname = Cookies.get('firstname');
 
     const [showHeader, setShowHeader] = useState(false);
 
