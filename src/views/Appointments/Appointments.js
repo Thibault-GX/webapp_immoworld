@@ -8,15 +8,23 @@ import API from '../../api';
 import AppointmentList from '../../components/AppointmentList/AppointmentList';
 import Appointment from '../../components/Appointment/Appointment';
 import AddAppointment from '../../components/AddAppointment/AddAppointment';
+import Cookies from 'js-cookie';
 
 const Appointments = () => {
     const [date, setDate] = useState(new Date());
     const [error, setError] = useState(null);
     const [appointments, setAppointments] = useState([]);
     const [currentDate, setCurrentDate] = useState(new Date(new Date().setHours(0,0,0,0)).getTime())
+    const authorization = Cookies.get('Authorisation');
+    // changer l'url selon le role id 
+    if(authorization != 24 ){
+        var url = `appointments?filter[where_date]=${currentDate}`;
+    }else{
+        url = `appointments/my?filter[where_date]=${currentDate}`;
+    }
 
     React.useEffect(function(){
-        API.get(`appointments?filter[where_date]=${currentDate}`)
+        API.get(`${url}`)
             .then(function (response) {
                 const {appointments:data} = response.data;
                 setAppointments(data);
@@ -57,3 +65,4 @@ const Appointments = () => {
 }
 
 export default Appointments
+

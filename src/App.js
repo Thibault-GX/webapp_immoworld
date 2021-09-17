@@ -82,7 +82,7 @@ const WithAxios = ({children}) => {
 
     API.interceptors.request.use(req => {
         if (isUserAuth) {
-            const token = state.data.token;
+            const token = Cookies.get('authorationHeader');
             req.headers.authorization = `Bearer ${token}`;
         }
         return req;
@@ -109,13 +109,13 @@ const WithAxios = ({children}) => {
 const App = () => {
     return (
         <Provider store={Store}>
-            {/* <WithAxios> */}
+            <WithAxios>
                 <div className="App">
                     <Router history={hist}>
                         <Routes/>
                     </Router>
                 </div>
-            {/* </WithAxios> */}
+            </WithAxios>
         </Provider>
     );
 }

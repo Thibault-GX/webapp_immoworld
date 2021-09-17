@@ -8,8 +8,8 @@ export default function Avatar(props) {
 
     // récupération des initiales (prénom puis nom) d'un utilisateur connecté, puis concaténation en capitales
     function UserInitials(props) {
-        let userFirstnameInitial = props.firstname.substring(0,1);
-        let userLastnameInitial = props.lastname.substring(0,1);
+        let userFirstnameInitial = props.firstname.substr(0,1);
+        let userLastnameInitial = props.lastname.substr(0,1);
         var UserInitials = (userLastnameInitial + userFirstnameInitial).toUpperCase();
 
         return UserInitials;
