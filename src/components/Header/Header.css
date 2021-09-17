@@ -8,12 +8,6 @@
     z-index: 2;
 }
 
-/* .rs-nav>ul:nth-child(1)>a:nth-child(5)>li:nth-child(1)>a:nth-child(1) {
-    position: relative;
-    top: 0;
-    left: 0;
-} */
-
 .rs-nav>ul:nth-child(1)>a:nth-child(5)>li:nth-child(1)>a:nth-child(1) .rs-sidenav-body div.avatar {
     margin: auto;
     margin-top: 2rem;
@@ -57,8 +51,10 @@ i.rs-icon-angle-double-left {
     font-size: 2rem;
 }
 
-i.rs-icon {
-    font-size: 1.5rem !important;
-    margin-left: -0.3rem;
-    margin-bottom: -0.2rem;
+li.rs-nav-item.immo-link>a.rs-nav-item-content>i.rs-icon {
+    font-size: 1.5rem;
+    height: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
