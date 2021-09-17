@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {Modal, ButtonToolbar, Button} from 'rsuite';
 import DeleteUser from './../DeleteUser/DeleteUser';
 import Avatar from './../../Avatar/Avatar';
+import Cookies from 'js-cookie';
 
 function UsersItems({user}) {
     
@@ -33,7 +34,7 @@ function UsersItems({user}) {
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <DeleteUser user={user}/>
+                    { Cookies.get('Authorisation') == 16 || Cookies.get('Authorisation') == 24 || Cookies.get('Authorisation') == 39 ? <DeleteUser user={user}/> : null}
                     <Button onClick={toggleModal} appearance="primary">Fermer</Button>
                 </Modal.Footer>
             </Modal>

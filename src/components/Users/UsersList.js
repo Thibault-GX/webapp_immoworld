@@ -4,6 +4,7 @@ import UsersItems from './UserItems/UsersItems';
 import { Col } from 'rsuite';
 import './Users.css';
 import AddUserForm from './AddUserForm/AddUserForm';
+import Cookies from 'js-cookie';
 
 function UsersList() {
 
@@ -69,7 +70,7 @@ function UsersList() {
                     )
                 }
             })}
-            <AddUserForm/>
+            { Cookies.get('Authorisation') == 16 || Cookies.get('Authorisation') == 24 || Cookies.get('Authorisation') == 39 ? <AddUserForm/> : null}
         </div>
     )
 }
