@@ -32,7 +32,6 @@ export default function Avatar(props) {
     avatar.forEach(avatar => {
         const text = avatar.innerText;
         avatar.style.backgroundColor = colors[numberFromInitials(text) % colors.length];
-        
     });
     
     return (

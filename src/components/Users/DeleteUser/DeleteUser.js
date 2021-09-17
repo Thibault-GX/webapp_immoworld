@@ -1,29 +1,51 @@
 import React, { useState } from 'react';
-import { Button, Modal } from 'rsuite';
+import { Button, Modal, Form, ControlLabel, FormControl, FormGroup } from 'rsuite';
+import './DeleteUser.css';
+import API from 'api';
 
 function DeleteUser({user}) {
 
-    const [showAddUser, showModalAddUser] = useState(false);
+    const [showDeactivateUser, showModalDeactivateUser] = useState(false);
 
-    const toggleModalAddUser = () => {
-        showModalAddUser(!showAddUser);
+    const toggleModalDeactivateUser = () => {
+        showModalDeactivateUser(!showDeactivateUser);
+    }
+
+    function deactivateSelectedUser() {
+        API.put(`users/${user.id}`, {
+            firstname: user.firstname,
+            lastname: (user.lastname).toUpperCase(),
+            password: user.password,
+            email: user.email,
+            phone: user.phone,
+            activeUser: false,
+            id_userRoles: user.id_userRoles,
+            id_agencies: user.id_agencies
+        })
+        .then(function (response) {
+            alert(`${user.firstname+' '+user.lastname} a été correctement désactivé.`);
+            toggleModalDeactivateUser();
+        })
     }
 
     return (
         <div>
-            <Button appearance="primary" color="red" onClick={toggleModalAddUser} title="Ajouter un membre du personnel">Supprimer</Button>
+            <Button appearance="primary" color="red" onClick={toggleModalDeactivateUser} title="Ajouter un membre du personnel">Supprimer</Button>
 
-            <Modal show={showAddUser}>
+            <Modal show={showDeactivateUser}>
                 <Modal.Header closeButton={false}>
-                    <Modal.Title>Êtes-vous sûr de vouloir retirer<br/>{user.firstname+' '+user.lastname}<br/>de la liste du personnel ?</Modal.Title>
+                    <Modal.Title>Êtes-vous sûr de vouloir retirer {user.firstname+' '+user.lastname}<br/>de la liste du personnel ?</Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
                     <p>L'utilisateur sera désactivé, les données y étant associées ne seront pas supprimées, mais il ne pourra plus effectuer d'opérations sur Immoworld et ne pourra plus accéder à ses données à moins d'être réactivé par un utilisateur ayant les droits nécessaires.</p>
+                    <Form id="deactivateUserForm" onSubmit={deactivateSelectedUser}>
+                        <Button appearance="primary" color="green" type="submit">Désactiver l'utilisateur</Button>
+                    </Form>
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button onClick={toggleModalAddUser} appearance="primary" color="red">Annuler</Button>
+                    <Button onClick={toggleModalDeactivateUser} appearance="primary" color="red">Annuler</Button>
                 </Modal.Footer>
             </Modal>
         </div>
