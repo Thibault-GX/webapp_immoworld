@@ -40,7 +40,7 @@ function Login() {
                 >
                     {formik => (
                         <div className="Connection">
-                            <h1 className="Titlelogin" >Connexion</h1>
+                            <h1 className="Titlelogin">Connexion</h1>
                             <Form className="FormConnection">
                                 <TextFiled type='text' label='Email :' name='email' id='email' className="InputConnection"/>   
                                 <TextFiled type='password' label='Mot de passe :' name='password' id='password' className="InputConnection"/>   

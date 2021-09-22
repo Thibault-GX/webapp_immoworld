@@ -21,6 +21,7 @@ export function login({email, password}) {
             Cookies.set('firstname', data.firstname);
             Cookies.set('authorationHeader', data.token);
             Cookies.set('Authorisation', data.id_userRoles);
+            Cookies.set('Agence', data.id_agencies);
         })
         .catch((error) => {
             if (error.response.status == 401) {

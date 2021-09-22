@@ -1,17 +1,24 @@
 import React, { useState } from 'react';
-import { Button, Modal } from 'rsuite';
+import { Button, Modal, Notification } from 'rsuite';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import API from 'api';
 
 const AddUserForm = () => {
 
+    const [showAddUser, showModalAddUser] = useState(false);
     const [agencies,setAgencies] = React.useState([]);
     const [userRoles,setUserRoles] = React.useState([]);
-    const [showAddUser, showModalAddUser] = useState(false);
 
     const toggleModalAddUser = () => {
         showModalAddUser(!showAddUser);
+    }
+
+    function open(funcName) {
+        Notification[funcName] ({
+            title: 'SUCCÈS',
+            description: <p style={{ width: 320 }} rows={3}>Votre utilisateur a été ajouté avec succès.</p>
+        });
     }
 
     // agencies
@@ -87,7 +94,7 @@ const AddUserForm = () => {
             id_agencies: values.id_agencies
         })
         .then(function (response) {
-            alert('Le nouvel utilisateur a été ajouté avec succès.');
+            open('success');
             toggleModalAddUser();
         })
     }
@@ -206,9 +213,9 @@ const AddUserForm = () => {
                                 {userRoles.map((userRoles, i) => {
                                     return(<option key={i} value={userRoles.id}>{userRoles.name}</option>)
                                 })}
-                            {errors.id_userRoles && touched.id_userRoles ? (
-                                    <div className="addUserFormErrors">{errors.id_userRoles}</div>
-                            ) : null}
+                                {errors.id_userRoles && touched.id_userRoles ? (
+                                        <div className="addUserFormErrors">{errors.id_userRoles}</div>
+                                ) : null}
                             </Field>
                         </div>
                         <div className="formItem">
