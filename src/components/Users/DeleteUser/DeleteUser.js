@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Modal, Form, ControlLabel, FormControl, FormGroup } from 'rsuite';
+import { Button, Modal, Form, Notification } from 'rsuite';
 import './DeleteUser.css';
 import API from 'api';
 
@@ -9,6 +9,13 @@ function DeleteUser({user}) {
 
     const toggleModalDeactivateUser = () => {
         showModalDeactivateUser(!showDeactivateUser);
+    }
+
+    function open(funcName) {
+        Notification[funcName] ({
+            title: 'SUCCÈS',
+            description: <p style={{ width: 320 }} rows={3}>Votre utilisateur a été désactivé avec succès.</p>
+        });
     }
 
     function deactivateSelectedUser() {
@@ -23,7 +30,7 @@ function DeleteUser({user}) {
             id_agencies: user.id_agencies
         })
         .then(function (response) {
-            alert(`${user.firstname+' '+user.lastname} a été correctement désactivé.`);
+            open('success');
             toggleModalDeactivateUser();
         })
     }

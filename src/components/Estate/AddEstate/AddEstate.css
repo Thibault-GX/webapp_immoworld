@@ -1,0 +1,77 @@
+#addEstate {
+    border-radius: 50%;
+    width: 5rem;
+    height: 5rem;
+    font-size: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: royalblue;
+    border: 5px solid rgb(150, 149, 149);
+    color: white;
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+}
+
+#addEstateForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#addEstateForm label {
+    color: #3a3838;
+}
+
+
+.addEstateFormErrors {
+    color: rgb(182, 1, 1);
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.formGroupItem {
+    display: flex;
+    flex-direction: column;
+    width: 47%;
+    margin-bottom: 1.2rem;
+}
+
+.formItem {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.2rem;
+}
+
+@media (max-width: 844px) {
+
+    .modal-trigger-button {
+        min-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        flex-wrap: wrap;
+    }
+
+}
+
+@media (max-width: 375px) {
+    .modal-trigger-button {
+        font-size: 1rem;
+    }
+
+    .rs-modal-wrapper {
+        overflow: hidden;
+    }
+
+    .rs-modal-content {
+        height: 50%;
+        width: 360px;
+        margin-top: 10%;
+        margin-left: 0.5rem;
+    }
+}

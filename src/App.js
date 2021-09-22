@@ -22,7 +22,6 @@ const hist = createBrowserHistory();
 
 const Routes = () => {
     const state = useSelector(state => state);
-    console.log(state);
     const lastname = Cookies.get('lastname') ;
     const firstname = Cookies.get('firstname');
 

@@ -4,6 +4,7 @@ import EstatesList from '../../components/Estate/EstatesList/EstatesList';
 import Estate from '../../components/Estate/Estate';
 import { Button, Col,Grid ,Row} from 'rsuite';
 import API from 'api';
+import AddEstate from './../../components/Estate/AddEstate/AddEstate'
 
 import AvatarGeneration from 'components/Avatar/Avatar';
 
@@ -59,7 +60,6 @@ function Estates() {
     },[])
 
     const handleChangeFilter = (e) => {
-        console.log(e.target.type);
         if (e.target.type == "range") {
             formValues[e.target.id] = e.target.value;
             setFormValues({...formValues});
@@ -80,12 +80,6 @@ function Estates() {
                 }
             }
         });
-        console.log(`estates?
-        filter[WherePrice]=${0}&
-        filter[WhereMaxPrice]=${formValues.price}&
-        filter[WhereLivingSurfaceMin]=${0}&
-        filter[WhereLivingSurfaceMax]=${formValues.surface}&
-        filter[Garden]=${formValues.garden}`);
     }
 
     const [showFilter, setShowFilter] = React.useState(false);
@@ -97,14 +91,14 @@ function Estates() {
 
     React.useEffect(function() {
         window.addEventListener('resize', function(){
-          setScreen({ x : window.screen.width, y : window.screen.height});
+            setScreen({ x : window.screen.width, y : window.screen.height});
         });
     },[change,setChange])
 
 const show = () =>{
     showFilter ? setShowFilter(false) : setShowFilter(true)
 }
-    console.log(estates)
+
     return (
         <div className="EstateList">
             <h1>Liste des bien</h1>
@@ -287,6 +281,7 @@ const show = () =>{
                     return(<Estate estate={estate} key={i}></Estate>)
                 })}
             </EstatesList>
+            <AddEstate/>
         </div>
     )
 }
