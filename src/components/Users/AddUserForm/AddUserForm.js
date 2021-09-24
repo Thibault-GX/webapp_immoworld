@@ -3,6 +3,7 @@ import { Button, Modal, Notification } from 'rsuite';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import API from 'api';
+import Cookies from 'js-cookie';
 
 const AddUserForm = () => {
 
@@ -211,7 +212,9 @@ const AddUserForm = () => {
                             >
                                 <option>Sélectionnez le rôle du nouvel utilisateur</option>
                                 {userRoles.map((userRoles, i) => {
-                                    return(<option key={i} value={userRoles.id}>{userRoles.name}</option>)
+                                    if (userRoles.id > Cookies.get('Authorisation')) {
+                                        return(<option key={i} value={userRoles.id}>{userRoles.name}</option>)
+                                    }
                                 })}
                                 {errors.id_userRoles && touched.id_userRoles ? (
                                         <div className="addUserFormErrors">{errors.id_userRoles}</div>

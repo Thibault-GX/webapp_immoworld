@@ -20,7 +20,7 @@ code {
 main {
     padding: 2rem;
     padding-left: 5rem;
-    background-color: rgb(150, 149, 149);
+    background-color: rgba(150, 149, 149, 0.75);
     min-height: 100vh;
 }
 
@@ -39,6 +39,10 @@ a {
 
 .no-padding {
     padding: 0;
+}
+
+.light-title {
+    color: white;
 }
 
 h1 {

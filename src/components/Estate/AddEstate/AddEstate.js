@@ -228,7 +228,7 @@ const AddEstate = () => {
         <div>
             <Button onClick={toggleModalAddEstate} id="addEstate" title="Ajouter un bien">+</Button>
 
-            <Modal show={showAddEstate}>
+            <Modal show={showAddEstate} size="md" overflow="true">
                 <Modal.Header closeButton={false}>
                     <Modal.Title>Ajouter un bien</Modal.Title>
                 </Modal.Header>
@@ -269,6 +269,7 @@ const AddEstate = () => {
                         'new_zipCode': '',
                         'new_id_cities': '',
                         'new_floor': '',
+                        'id_agencies': ''
                     }}
                     validationSchema={AddEstateSchema}
                     onSubmit={ values => submitNewEstate(values)}
@@ -339,6 +340,37 @@ const AddEstate = () => {
                                         <div className="addEstateFormErrors">{errors.new_rawSurface}</div>
                                     ) : null}
                                 </div>
+                            </div>
+                            
+                            <div className="formItem">
+                                <label htmlFor="new_description">Description</label>
+                                <Field
+                                    as="textarea" 
+                                    id="new_description"
+                                    name="new_description"
+                                    onChange={handleChange}
+                                    value={values.new_description}
+                                    placeholder="Veuillez renseigner une description pour le nouveau bien"
+                                    className="form-textarea"
+                                />
+                                {errors.new_description && touched.new_description ? (
+                                    <div className="addEstateFormErrors">{errors.new_description}</div>
+                                ) : null}
+                            </div>
+
+                            <div className="formItem">
+                                <label htmlFor="new_price">Prix (en €)</label>
+                                <Field
+                                    type="number"
+                                    id="new_price"
+                                    name="new_price"
+                                    onChange={handleChange}
+                                    value={values.new_price }
+                                    placeholder="Veuillez indiquer le prix."
+                                />
+                                {errors.new_price && touched.new_price ? (
+                                        <div className="addEstateFormErrors">{errors.new_price}</div>
+                                ) : null}
                             </div>
 
                             <div className="formItem">
@@ -424,20 +456,6 @@ const AddEstate = () => {
                                 />
                                 {errors.new_energyRating && touched.new_energyRating ? (
                                         <div className="addEstateFormErrors">{errors.new_energyRating}</div>
-                                ) : null}
-                            </div>
-                            <div className="formItem">
-                                <label htmlFor="new_price">Prix</label>
-                                <Field
-                                    type="number"
-                                    id="new_price"
-                                    name="new_price"
-                                    onChange={handleChange}
-                                    value={values.new_price }
-                                    placeholder="Veuillez indiquer le prix."
-                                />
-                                {errors.new_price && touched.new_price ? (
-                                        <div className="addEstateFormErrors">{errors.new_price}</div>
                                 ) : null}
                             </div>
 
@@ -566,21 +584,6 @@ const AddEstate = () => {
                                 />
                                 {errors.new_innerFloors && touched.new_innerFloors ? (
                                     <div className="addEstateFormErrors">{errors.new_innerFloors}</div>
-                                ) : null}
-                            </div>
-
-                            <div className="formItem">
-                                <label htmlFor="new_description">Description</label>
-                                <Field
-                                    type="textarea" 
-                                    id="new_description"
-                                    name="new_description"
-                                    onChange={handleChange}
-                                    value={values.new_description}
-                                    placeholder="Veuillez renseigner une description pour le nouveau bien"
-                                />
-                                {errors.new_description && touched.new_description ? (
-                                    <div className="addEstateFormErrors">{errors.new_description}</div>
                                 ) : null}
                             </div>
                         

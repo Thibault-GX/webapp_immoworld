@@ -15,13 +15,18 @@ export function login({email, password}) {
         .then((response) => {
             const data = response.data;
             console.log(data);
-            dispatch(loginSuccess(data));
             Cookies.set('isLoggedIn', true);
             Cookies.set('lastname', data.lastname);
             Cookies.set('firstname', data.firstname);
             Cookies.set('authorationHeader', data.token);
             Cookies.set('Authorisation', data.id_userRoles);
             Cookies.set('Agence', data.id_agencies);
+            Cookies.set('Active', data.activeUser);
+            if (data.activeUser == 1) {
+                dispatch(loginSuccess(data));
+            } else {
+                dispatch(loginFailure({message : 'L\'utilisateur est inactif.'}));
+            }
         })
         .catch((error) => {
             if (error.response.status == 401) {

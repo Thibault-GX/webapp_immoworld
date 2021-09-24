@@ -17,13 +17,13 @@ function UsersItems({user}) {
             <ButtonToolbar>
                 <Button appearance="primary" className="modal-trigger-button user-button" onClick={toggleModal} title={'Cliquez ici pour voir les informations de '+user.lastname+ ' ' + user.firstname}>
                     <Avatar firstname={user.firstname} lastname={user.lastname} />
-                    {user.lastname+ ' ' + user.firstname}
+                    {user.lastname + ' ' + user.firstname}
                 </Button>
             </ButtonToolbar>
 
             <Modal show={show}>
                 <Modal.Header closeButton={false}>
-                    <Modal.Title>{user.lastname+ ' ' + user.firstname}</Modal.Title>
+                    <Modal.Title>{user.lastname + ' ' + user.firstname}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div>

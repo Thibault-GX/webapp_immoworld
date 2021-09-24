@@ -101,7 +101,7 @@ const show = () =>{
 
     return (
         <div className="EstateList">
-            <h1>Liste des bien</h1>
+            <h1 className="light-title">Liste des biens</h1>
             <Grid fluid className="show-container">
                 <Row className="show-grid" justify="center">
                     <Col xs={screen.x > 415 ? 8 : 24}>
