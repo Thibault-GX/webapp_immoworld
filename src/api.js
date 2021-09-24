@@ -3,7 +3,7 @@ axios.defaults.withCredentials = true;
 
 
 const api = axios.create({
-    baseURL: 'https://immoworld-api.herokuapp.com/api/v1'
+    baseURL: 'http://1888a1b.online-server.cloud/api/v1/'
 });
 
 export default api;

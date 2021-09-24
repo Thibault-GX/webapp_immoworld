@@ -49,7 +49,7 @@ function UsersList() {
     return (
         <div id="userList">
             <Col md={24} sm={24}>
-            <h1 style={{fontSize:'1.2rem', lineHeight : '30px'}}>Annuaire du personnel</h1>
+            <h1 style={{fontSize:'1.2rem', lineHeight : '30px'}} className="light-title">Annuaire du personnel</h1>
             
             <select className="SelectAgencie"  onChange={handleChange} name="value">
                 <option value="0">Filtrer par agence</option>

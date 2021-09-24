@@ -87,7 +87,7 @@ function formatDate() {
         formValues.dateError = dateError;
         formValues.appointmentAddressError = appointmentAddressError
         formValues.usersIdError  = usersIdError;
-        formValues.descriptionError = descriptionError
+        formValues.descriptionError = descriptionError;
         setFormValues({...formValues});
         if (errors) {
             return false;
@@ -131,7 +131,7 @@ function formatDate() {
 
     return (
         <div className="AddAppointment">
-            <h3>Ajouter un rendez-vous</h3>
+            <h3 className="light-title">Ajouter un rendez-vous</h3>
             {error ? <Alert message={error} impact='danger'/> : null}
             {success ? <Alert message={success} impact='success'/> : null}
             <form onSubmit={(e) => { handleSubmit(e) }} className="AddAppointmentForm"> 

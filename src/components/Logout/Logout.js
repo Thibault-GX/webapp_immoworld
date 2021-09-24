@@ -17,10 +17,13 @@ function Logout() {
         dispatch(logout());
         Cookies.remove('isLoggedIn');
         Cookies.remove('loading');
+        Cookies.remove('Active');
+        Cookies.remove('Agence');
+        Cookies.remove('Authorisation');
     },
     [dispatch],
-  )
-  handleLogout()  
+)
+handleLogout()  
 return (<div></div>)
 }
 

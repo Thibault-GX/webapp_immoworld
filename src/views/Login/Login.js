@@ -23,7 +23,6 @@ function Login() {
         },
         [dispatch],
     )
-  
 
     return (
         <div className="Login">
@@ -38,13 +37,13 @@ function Login() {
                     validationSchema={validationFormLogin}
                     onSubmit={values => handleSubmit(values)}
                 >
-                    {formik => (
+                    { formik => (
                         <div className="Connection">
                             <h1 className="Titlelogin">Connexion</h1>
                             <Form className="FormConnection">
                                 <TextFiled type='text' label='Email :' name='email' id='email' className="InputConnection"/>   
                                 <TextFiled type='password' label='Mot de passe :' name='password' id='password' className="InputConnection"/>   
-                                <Button className="buttonLoging" appearance="primary" loading={isloading} type="submit" >Se connecter</Button>
+                                <Button className="buttonLoging" appearance="primary" loading={isloading} type="submit">Se connecter</Button>
                                 {isError ?          
                                 <Message
                                     showIcon
@@ -56,7 +55,6 @@ function Login() {
                         </div>
                     )}
                 </Formik>
-                
             </div>
         </div>
     )

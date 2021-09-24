@@ -1,17 +1,16 @@
-import React, {useEffect} from "react";
-import API from '../../api';
+import React from "react";
+import Cookies from 'js-cookie';
+import {Redirect} from "react-router-dom";
 
 export default function Home(props) {
 
-    // useEffect(() => {
-    //     API.get(`appointments`).then(response => {
-    //         console.log(response.data);
-    //     }).catch(err => {
-    //         console.log(err);
-    //     })
-    // }, []);
+    var activeCookie = Cookies.get('Active');
+
+    if (activeCookie == 0 || activeCookie == undefined) {
+        return (<Redirect to="/logout"/>);
+    }
 
     return (
-        <h1>Bienvenue sur la page d'accueil d'Immoworld</h1>
-    )
+        <h1 className="light-title">Bienvenue sur la page d'accueil d'Immoworld</h1>
+    );
 }

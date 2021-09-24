@@ -23,7 +23,6 @@
     color: #3a3838;
 }
 
-
 .addEstateFormErrors {
     color: rgb(182, 1, 1);
 }
@@ -48,6 +47,38 @@
     margin-bottom: 1.2rem;
 }
 
+.form-textarea {
+    height: 10rem;
+}
+
+.rs-modal {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.rs-modal-content {
+    background-color: #ececec;
+    border: solid 1px darkslateblue;
+    box-shadow: 0px 0px 10px 3px;
+    font-weight: 600;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25%;
+    margin-bottom: 25%;
+}
+
+.rs-modal-body p {
+    color: #3a3838;
+}
+
+div.rs-modal-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
 @media (max-width: 844px) {
 
     .modal-trigger-button {
@@ -64,7 +95,7 @@
         font-size: 1rem;
     }
 
-    .rs-modal-wrapper {
+    div.rs-modal-wrapper {
         overflow: hidden;
     }
 

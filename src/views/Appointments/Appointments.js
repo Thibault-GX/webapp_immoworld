@@ -51,7 +51,6 @@ const Appointments = () => {
 
     return (
         <div className="Appointments">
-            {/* <h1>{date.toLocaleDateString()}</h1> */}
             {error ? <Alert error={error} impact='danger'/> : null}
             <Calendar onChange={onChange} onClickDay={OnclickDay} value={date} />
             <AppointmentList>
